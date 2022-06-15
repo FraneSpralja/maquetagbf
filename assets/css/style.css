@@ -447,6 +447,106 @@ a#access-footer{
     display: block;
 }
 
+/* BREAKPOINTS */
+
+@media (min-width: 350px) and (max-width: 790px) {
+    nav {
+        display: grid;
+        grid-template-areas: 
+        "logo"
+        "menu"
+        "registro"
+        ;
+        grid-template-columns: 100%;
+    }
+
+    #brand-logo {
+        grid-area: logo;
+        margin-left: auto;
+    }
+
+    .nav-menu {
+        grid-area: menu;
+        padding-bottom: 10px;
+    }
+
+    #menu .list-item {
+        font-size: 14px;
+    }
+
+    .nav-access {
+        grid-area: registro;
+        margin-right: auto;
+    }
+
+    section.header-hero {
+        flex-flow: column;
+        row-gap: 10px;
+    }
+
+    header#header {
+        height: 100vh;
+    }
+
+    div#hero-card {
+        width: 90%;
+    }
+
+    form#formulario {
+        width: 90%;
+    }
+
+    #resultadoHeader {
+        display: none;
+    }
+
+    .como-funciona {
+        flex-flow: column;
+        row-gap: 10px;
+    }
+
+    div.news-newsletter-box {
+        flex-flow: column;
+        row-gap: 20px;
+    }
+
+    div.news-newsletter-box div:not(div.news-newsletter-box div:last-child) {
+        border-bottom: 1px solid #fff;
+        padding-bottom: 20px;
+    }
+
+    section#divisas {
+        flex-flow: column;
+    }
+
+    div#divisas-box {
+        width: 100%;
+    }
+
+    table#divisas-table {
+        width: 90%;
+        font-size: 14px;
+        margin: auto;
+    }
+
+    div#historico-divisas {
+        width: 100%;
+    }
+
+    .card-dialogo {
+        width: 80%;
+    }
+
+    .card-dialogo-header img {
+        width: 200px;
+    }
+
+    .close-dialog-button {
+        bottom: 60vh;
+        left: 80vw;
+    }
+}
+
 
 /* CLASES ESPECIALES JS */
 .button-disabled{
