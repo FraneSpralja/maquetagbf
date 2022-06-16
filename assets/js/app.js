@@ -1,5 +1,6 @@
 // IMPORTS
 import { getDivisa } from "./divisa.js";
+import { registroBtn, modalFormulario } from "./formulario.js";
 
 // VARIABLES
 
@@ -16,8 +17,6 @@ const saberMasBtnUno = document.querySelector('#funciona-button-uno');
 const saberMasBtnDos = document.querySelector('#funciona-button-dos');
 const saberMasBtnTres = document.querySelector('#funciona-button-tres');
 // const ventanaUno = document.querySelector('#ventanaUno');
-
-// Divisas
 
 
 // Expresion Regular
@@ -44,6 +43,7 @@ function eventListener() {
     riesgo.addEventListener('change', validarFormularioHeader);
 
     formulario.addEventListener('submit', enviarFormularioHeader);
+    registroBtn.addEventListener('click', modalFormulario);
 
 
 };

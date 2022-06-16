@@ -593,3 +593,101 @@ a[id^="button-divisa"]{
     margin: auto;
     border-radius: 3px;
 }
+
+.modal-formulario {
+    height: 100%;
+    width: 100%;
+    background-color: #353535b6;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+}
+
+#formularioContrato {
+    width: 26vw;
+    height: 50vh;
+    margin: auto;
+    padding: 20px 0;
+    background: #f2f2f2;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    /* box-sizing: border-box; */
+}
+
+#formContainer {
+    position: absolute;
+    display: -webkit-inline-box;
+}
+
+#formularioContrato div.formBox {
+    position: relative;
+    height: fit-content;
+    width: 25vw;
+    height: 50vh;
+    display: flex;
+    flex-flow: column;
+    row-gap: 10px;
+    padding: 0 10px;
+}
+
+/* #formularioContrato div.formBox:first-child {
+    margin-left: 1vw;
+} */
+
+#formularioContrato div.formBox span{
+    text-align: center;
+}
+
+#formularioContrato div.formBox input {
+    height: 4vh;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 0 10px;
+    display: block;
+    margin: auto;
+    width: 90%;
+}
+
+#formularioContrato div.formBox label {
+    display: block;
+    margin: auto;
+    width: 90%;
+}
+
+#formularioContrato div.formBox div.button-box {
+    width: 90%;
+    padding: 10px 20px;
+    display: flex;
+}
+
+#formularioContrato div.formBox div.buttonBox button {
+    padding: 7px 15px;
+    border-radius: 10px;
+    background: linear-gradient(180deg, #aab600, #98a302);
+    border: 1px solid #aab600;
+    float: right;
+    cursor: pointer;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 2s;
+}
+
+@keyframes fade {
+    from {
+        opacity: .4;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
