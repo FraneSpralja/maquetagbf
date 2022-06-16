@@ -1,6 +1,11 @@
 // IMPORTS
 import { getDivisa } from "./divisa.js";
-import { registroBtn, modalFormulario } from "./formulario.js";
+import { 
+    registroBtn, 
+    newResgistroBtn, 
+    bottomResgistroBtn, 
+    modalFormulario 
+} from "./formulario.js";
 
 // VARIABLES
 
@@ -44,6 +49,8 @@ function eventListener() {
 
     formulario.addEventListener('submit', enviarFormularioHeader);
     registroBtn.addEventListener('click', modalFormulario);
+    newResgistroBtn.addEventListener('click', modalFormulario);
+    bottomResgistroBtn.addEventListener('click', modalFormulario);
 
 
 };

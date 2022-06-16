@@ -619,7 +619,7 @@ a[id^="button-divisa"]{
     right: 0;
     border-radius: 10px;
     overflow: hidden;
-    /* box-sizing: border-box; */
+    box-shadow: 0 0 4px #2f2f2f;
 }
 
 #formContainer {
@@ -668,6 +668,12 @@ a[id^="button-divisa"]{
     display: flex;
 }
 
+#formularioContrato div.formBox div.buttonBox {
+    display: flex;
+    column-gap: 14px;
+    flex-flow: row;
+}
+
 #formularioContrato div.formBox div.buttonBox button {
     padding: 7px 15px;
     border-radius: 10px;
@@ -675,11 +681,54 @@ a[id^="button-divisa"]{
     border: 1px solid #aab600;
     float: right;
     cursor: pointer;
+    display: block;
+    margin: auto;
+    min-width: 100px;
 }
 
 .fade {
     animation-name: fade;
     animation-duration: 2s;
+}
+
+#cerrarFormulario {
+    position: relative;
+    display: block;
+    top: 20.5vh;
+    left: 62vw;
+    display: block;
+    height: 20px;
+    width: 20px;
+    background: #dddddd;
+    color: #151515;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 17px;
+    z-index: 1;
+    box-shadow: 0 0 4px #2f2f2f;
+    cursor: pointer;
+}
+
+@media (min-width: 350px) and (max-width: 790px) {
+    #formularioContrato {
+        width: 50vh;
+    }
+
+    #formContainer {
+        width: 100%;
+    }
+
+    #formularioContrato div.formBox {
+        width: 83vw;
+    }
+
+    #cerrarFormulario {
+        top: 20vh;
+        left: 90vw;
+        height: 30px;
+        width: 30px;
+        font-size: 24px;
+    }
 }
 
 @keyframes fade {

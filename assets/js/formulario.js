@@ -1,5 +1,9 @@
 export const registroBtn = document.querySelector('#access-button');
+export const newResgistroBtn = document.querySelector('#news-register');
+export const bottomResgistroBtn = document.querySelector('#access-footer');
 const sectionModal = document.querySelector('#sectionModalFormulario');
+
+const breakpoint = window.matchMedia("(min-width: 350px) and (max-width: 790px)")
 
 // Class
 
@@ -21,6 +25,7 @@ export function modalFormulario() {
     
     
     const nuevoFormulario = `
+    <a id="cerrarFormulario">X</a>
     <form id="formularioContrato">
         <div id="formContainer">
             <div id="formUno" class="formBox fade">
@@ -79,16 +84,28 @@ export function modalFormulario() {
     const formTres = document.querySelector('#formTres');
 
     document.querySelector('#formUno .buttonBox .buttonSiguiente').addEventListener('click', () => {
-        container.style.left = '-26vw';
-        formUno.style.visibility = 'hidden';
-        formTres.style.visibility = 'hidden';
+        if(breakpoint.matches){
+            container.style.left = '-88vw';
+            formUno.style.visibility = 'hidden';
+            formTres.style.visibility = 'hidden';            
+        }else{
+            container.style.left = '-26vw';
+            formUno.style.visibility = 'hidden';
+            formTres.style.visibility = 'hidden';
+        }
         
     })
 
     document.querySelector('#formDos .buttonBox .buttonSiguiente').addEventListener('click', () => {
-        container.style.left = '-52.5vw';
-        formDos.style.visibility = 'hidden';
-        formTres.style.visibility = 'inherit';
+        if(breakpoint.matches){
+            container.style.left = '-176.2vw';
+            formDos.style.visibility = 'hidden';
+            formTres.style.visibility = 'inherit';
+        }else{
+            container.style.left = '-52.5vw';
+            formDos.style.visibility = 'hidden';
+            formTres.style.visibility = 'inherit';
+        }
     })
 
     document.querySelector('#formDos .buttonBox .buttonVolver').addEventListener('click', () => {
@@ -97,11 +114,24 @@ export function modalFormulario() {
     })
 
     document.querySelector('#formTres .buttonBox .buttonVolver').addEventListener('click', () => {
-        container.style.left = '-26vw';
-        formDos.style.visibility = 'inherit';
-        formTres.style.visibility = 'hidden';
+        if(breakpoint.matches) {
+            container.style.left = '-88vw';
+            formDos.style.visibility = 'inherit';
+            formTres.style.visibility = 'hidden';
+        }else{
+            container.style.left = '-26vw';
+            formDos.style.visibility = 'inherit';
+            formTres.style.visibility = 'hidden';
+        }
     })
+
+    document.querySelector('#cerrarFormulario').addEventListener('click', () => {
+        modalFormulario.remove()
+    });
 }
+
+
+
 
 
 
