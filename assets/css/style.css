@@ -711,7 +711,7 @@ a[id^="button-divisa"]{
 
 @media (min-width: 350px) and (max-width: 790px) {
     #formularioContrato {
-        width: 50vh;
+        width: 90%;
     }
 
     #formContainer {
