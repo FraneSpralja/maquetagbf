@@ -1,5 +1,5 @@
 // IMPORTS
-import { getDivisa } from "./divisa.js";
+import { getDivisa, imprimirTablaDivisas } from "./divisa.js";
 import { 
     registroBtn, 
     newResgistroBtn, 
@@ -22,7 +22,7 @@ const saberMasBtnUno = document.querySelector('#funciona-button-uno');
 const saberMasBtnDos = document.querySelector('#funciona-button-dos');
 const saberMasBtnTres = document.querySelector('#funciona-button-tres');
 // const ventanaUno = document.querySelector('#ventanaUno');
-
+let arrayBtn;
 
 // Expresion Regular
 const er = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -40,7 +40,7 @@ function eventListener() {
 
     // FETCH DIVISAS
     window.addEventListener('DOMContentLoaded', () => {
-        getDivisa()
+        imprimirTablaDivisas(getDivisa())
     });
 
     nombre.addEventListener('blur', validarFormularioHeader);

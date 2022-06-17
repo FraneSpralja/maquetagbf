@@ -3,6 +3,7 @@ const tablaDivisas = document.querySelector('#divisas-table tbody');
 const historicoDivisas = document.querySelector('#historico-divisas');
 const ctx = document.getElementById('myChart').getContext('2d');
 
+
 export async function getDivisa() {
 
     try{
@@ -18,35 +19,37 @@ export async function getDivisa() {
         const divisasArr = Object.entries(divisas);
         divisasArr.splice(0, 3)
         
-        console.log(divisasArr)
+        return divisasArr;
         
-        return divisasArr
-        
+        // return divisasArr
         
         // imprimir global divisas
-/*         divisasArr.forEach((divisa) => {
-            tablaDivisas.innerHTML += `
-            <tr>
-                <th>${divisa[1].nombre}</th>
-                <td>${divisa[1].valor}</td>
-                <td>${divisa[1].unidad_medida}</td>
-                <td><button id="button-divisa-${divisa[1].codigo}" data-id="${divisa[1].codigo}" data-name="${divisa[1].nombre}">Ver histórico</button></td>
-            </tr>
-            `
-        });
-        imprimirVerHistorico(); */
+
     }catch(err){
         console.log('error')
     }
 
 }
 
-/* function imprimirVerHistorico() {
-    const divisaBtn = document.querySelectorAll('button[id^="button-divisa-"]');
+export function imprimirTablaDivisas(divisasArr) {
+    divisasArr.forEach((divisa) => {
+        tablaDivisas.innerHTML += `
+        <tr>
+            <th>${divisa[1].nombre}</th>
+            <td>${divisa[1].valor}</td>
+            <td>${divisa[1].unidad_medida}</td>
+            <td><button id="button-divisa-${divisa[1].codigo}" data-id="${divisa[1].codigo}" data-name="${divisa[1].nombre}">Ver histórico</button></td>
+        </tr>
+        `
 
+        const divisaBtn = Array.apply(null, document.querySelectorAll('button[id^="button-divisa-"]'));
+        
+        return divisaBtn;
+    
+    });
+}
 
-    // console.log(divisaBtn)
-
+/* export function imprimirVerHistorico() {
     
     divisaBtn.forEach((btn) => {
 
