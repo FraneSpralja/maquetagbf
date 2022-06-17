@@ -40,7 +40,7 @@ function eventListener() {
 
     // FETCH DIVISAS
     window.addEventListener('DOMContentLoaded', () => {
-        imprimirTablaDivisas(getDivisa())
+        getDivisa()
     });
 
     nombre.addEventListener('blur', validarFormularioHeader);

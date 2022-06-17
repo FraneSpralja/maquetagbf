@@ -21,17 +21,19 @@ export async function getDivisa() {
         
         return divisasArr;
         
+        
         // return divisasArr
         
         // imprimir global divisas
-
+        
     }catch(err){
         console.log('error')
     }
-
+    
+    imprimirTablaDivisas()
 }
 
-export function imprimirTablaDivisas(divisasArr) {
+export function imprimirTablaDivisas() {
     divisasArr.forEach((divisa) => {
         tablaDivisas.innerHTML += `
         <tr>
