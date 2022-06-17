@@ -85,7 +85,7 @@ export function modalFormulario() {
 
     document.querySelector('#formUno .buttonBox .buttonSiguiente').addEventListener('click', () => {
         if(breakpoint.matches){
-            container.style.left = '-88vw';
+            container.style.left = '-76vw';
             formUno.style.visibility = 'hidden';
             formTres.style.visibility = 'hidden';            
         }else{
@@ -98,7 +98,7 @@ export function modalFormulario() {
 
     document.querySelector('#formDos .buttonBox .buttonSiguiente').addEventListener('click', () => {
         if(breakpoint.matches){
-            container.style.left = '-176.2vw';
+            container.style.left = '-152.2vw';
             formDos.style.visibility = 'hidden';
             formTres.style.visibility = 'inherit';
         }else{
@@ -115,7 +115,7 @@ export function modalFormulario() {
 
     document.querySelector('#formTres .buttonBox .buttonVolver').addEventListener('click', () => {
         if(breakpoint.matches) {
-            container.style.left = '-88vw';
+            container.style.left = '-76vw';
             formDos.style.visibility = 'inherit';
             formTres.style.visibility = 'hidden';
         }else{
