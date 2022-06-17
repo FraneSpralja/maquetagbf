@@ -1,5 +1,5 @@
 // IMPORTS
-import { getDivisa, imprimirTablaDivisas } from "./divisa.js";
+import { getDivisa } from "./divisa.js";
 import { 
     registroBtn, 
     newResgistroBtn, 
