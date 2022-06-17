@@ -12,11 +12,15 @@ export async function getDivisa() {
         if(!res.ok) return console.log('Error');
 
         const divisas = await res.json();
+
+        console.log(divisas)
+
         const divisasArr = Object.entries(divisas);
         divisasArr.splice(0, 3)
-
+        console.log(divisasArr)
+        
         // imprimir global divisas
-        divisasArr.forEach((divisa) => {
+/*         divisasArr.forEach((divisa) => {
             tablaDivisas.innerHTML += `
             <tr>
                 <th>${divisa[1].nombre}</th>
@@ -26,13 +30,13 @@ export async function getDivisa() {
             </tr>
             `
         });
-        imprimirVerHistorico();
+        imprimirVerHistorico(); */
     }catch(err){
         console.log('error')
     }
 }
 
-function imprimirVerHistorico() {
+/* function imprimirVerHistorico() {
     const divisaBtn = document.querySelectorAll('button[id^="button-divisa-"]');
 
 
@@ -77,4 +81,4 @@ function imprimirVerHistorico() {
 
         })
     })
-}
+} */
