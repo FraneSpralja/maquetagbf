@@ -13,11 +13,15 @@ export async function getDivisa() {
 
         const divisas = await res.json();
 
-        console.log(divisas)
+        // console.log(divisas)
 
         const divisasArr = Object.entries(divisas);
         divisasArr.splice(0, 3)
+        
         console.log(divisasArr)
+        
+        return divisasArr
+        
         
         // imprimir global divisas
 /*         divisasArr.forEach((divisa) => {
@@ -34,6 +38,7 @@ export async function getDivisa() {
     }catch(err){
         console.log('error')
     }
+
 }
 
 /* function imprimirVerHistorico() {
