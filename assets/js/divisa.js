@@ -33,14 +33,15 @@ export async function getDivisa() {
 }
 
 function imprimirVerHistorico() {
-    const divisaBtn = document.querySelectorAll('.btn-tabla');
+    const divisaBtn = Array.apply(null, document.querySelectorAll('.btn-tabla'));
     // ctx.reset()
-
-    const indexBtnDivisa = divisaBtn.findIndexOf(btn => btn.id === btn.dataset.id)
-
-    indexBtnDivisa.addEventListener('click', async () => {
+    
+    const indexBtnDivisa = divisaBtn.findIndex((btn) => btn.id == btn.dataset.id)
+    
+    console.log('error')
+    indexBtnDivisa.addEventListener.on('click',)} /* async () => {
             try {
-                const res = await fetch(`${url}${btn.dataset.id}`);
+                const res = await fetch(`${url}${indexBtnDivisa.dataset.id}`);
     
                 const urlBars = await res.json();
                 
@@ -68,10 +69,10 @@ function imprimirVerHistorico() {
                 })
             }catch(err){
                 console.log('error')
-            }
+            } */
     
-        })
-    }
+    //     })
+    // }
 
     // divisaBtn.forEach((btn) => {
     //     if(btn.id == btn.dataset.id) {
