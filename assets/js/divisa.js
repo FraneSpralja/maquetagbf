@@ -5,8 +5,6 @@ const ctx = document.getElementById('myChart').getContext('2d');
 
 // Objetos de captura
 
-let divisasArr;
-
 class Divisas {
     constructor(nombre, valor, unidadMedida, codigo){
     this.nombre = nombre;
@@ -16,21 +14,26 @@ class Divisas {
     }
 }
 
+const  bitcoin = new Divisas();
+const  dolar = new Divisas();
+const  uf = new Divisas();
+const  utm = new Divisas();
+const  euro = new Divisas();
+const  imacec = new Divisas();
+const  ipc = new Divisas();
+const  libra_cobre = new Divisas();
+const  tasa_desempleo = new Divisas();
+const  tpm = new Divisas();
 // FETCH funcion
 
-export async function getDivisa() {
-    const res = await fetch(url);
-    const divisaData = await res.json();
-
-    console.log(divisaData)
-    return divisaData
+export function getDivisa() {
+    fetch(url)
+        .then( res => res.json())
+        .then(data =>
+            conjuntoDivisas(data)
+            )
 };
 
-
-export function showDivisas() {
-    
-    getDivisa()
-
-    divisasArr = Object.entries()
-
+export function conjuntoDivisas(data) {
+    const divisasArr = data.Object.entries()
 }
