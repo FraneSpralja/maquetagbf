@@ -1,5 +1,5 @@
 // IMPORTS
-import { getDivisa } from "./divisa.js";
+import { getDivisa, showDivisas} from "./divisa.js";
 import { 
     registroBtn, 
     newResgistroBtn, 
@@ -40,7 +40,8 @@ function eventListener() {
 
     // FETCH DIVISAS
     window.addEventListener('DOMContentLoaded', () => {
-        getDivisa()
+        // getDivisa()
+        showDivisas()
     });
 
     nombre.addEventListener('blur', validarFormularioHeader);
