@@ -5,27 +5,32 @@ const ctx = document.getElementById('myChart').getContext('2d');
 
 // Objetos de captura
 
-const divisasArr = [];
+let divisasArr;
 
-const divisas = {
-    nombre:  '',
-    valor: '',
-    unidadMedida: '',
-    codigo: '',
+class Divisas {
+    constructor(nombre, valor, unidadMedida, codigo){
+    this.nombre = nombre;
+    this.valor = valor;
+    this.unidadMedida = unidadMedida;
+    this.codigo = codigo;
+    }
 }
 
 // FETCH funcion
 
 export async function getDivisa() {
     const res = await fetch(url);
-    await res.json();
+    const divisaData = await res.json();
 
-    console.log(res)
-    return res
+    console.log(divisaData)
+    return divisaData
 };
+
 
 export function showDivisas() {
     
-    divisas.nombre = res
+    getDivisa()
+
+    divisasArr = Object.entries()
 
 }
