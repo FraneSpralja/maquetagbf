@@ -191,11 +191,12 @@ function imprimirGraficoDivisas(data) {
     }
     })
     
-    serie.forEach((data) => {
+    serie.revert().forEach((data) => {
         
         const { fecha, valor } = data;
 
-
-
+        myChart.data['labels'].push(new Date(fecha).toLocaleDateString());
+        myChart.data['datasets'][0].data.push(valor)
+        
     })
 }
