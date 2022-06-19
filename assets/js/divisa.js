@@ -2,6 +2,16 @@ const url = 'https://mindicador.cl/api/'
 const tablaDivisas = document.querySelector('#divisas-table tbody');
 const historicoDivisas = document.querySelector('#historico-divisas');
 const ctx = document.getElementById('myChart').getContext('2d');
+const config = {
+    type: 'line',
+    data: {
+        datasets:[{
+            label: "Historicos"
+        }]
+    }
+};
+let myChart = new Chart(ctx, config);
+
 
 // Objetos de captura
 
@@ -157,8 +167,6 @@ function imprimirValoresGlobales() {
 function valoresHistoricosDivisas() {
     const historicosBtn = document.querySelectorAll('.button_historicos');
     
-    // destroyChart()
-    
     historicosBtn.forEach((btn) => {
         // console.log(btn)
         
@@ -179,49 +187,16 @@ function valoresHistoricosDivisas() {
 )}
         
 function imprimirGraficoDivisas(data) {
+    myChart.destroy();
+    myChart = new Chart(ctx, config);
 
     const { nombre, serie } = data
-    
-    
-    const myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            datasets:[
-                {
-                    label: `${nombre}`,
-                }
-            ]
-        }
-    });
-    myChart.render();
-
-    // console.log(myChart.data[0].dataPoints)
 
     serie.reverse().forEach((ele) => {
         
         const { fecha, valor } = ele;
-
-        console.log(data)
-
-        const variables = {
-            x: new Date(fecha).toLocaleDateString(),
-            y: valor
-        }
-
-        // myChart.data[0].dataPoints.push(variables)
-
         
-    })
+    });
+
+    myChart.update();
 }
-
-// export function destroyChart() {
-//     myChart.destroy();
-// }
-
-/*function botonLimpiarTabla() {
-    const limpiarBtn = document.createElement('button');
-    limpiarBtn.classList.add('botonLimpiar');
-    limpiarBtn.setAttribute('onclick', destroyChart());
-
-    historicoDivisas.insertBefore(limpiarBtn, document.querySelector('#myChart'));
-} */
