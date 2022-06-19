@@ -38,7 +38,7 @@ function eventListener() {
 
     document.addEventListener('DOMContentLoaded', () => {
         iniciarApp()
-        // Fetch divisas
+        // Fetch e imprimir divisas
         getDivisa()
         imprimirTablaDivisas()
     });
@@ -145,6 +145,8 @@ function resetFormularioHeader(){
 }
 
 // COMO FUNCIONA
+
+/* Mosatrar modales con los botones correspondientes */
 
 function activarModalInfo() {
     saberMasBtnUno.addEventListener('click', () => {

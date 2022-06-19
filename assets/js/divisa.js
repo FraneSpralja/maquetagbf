@@ -1,3 +1,5 @@
+// DECLARAR VARIABLES
+
 const url = 'https://mindicador.cl/api/'
 const tablaDivisas = document.querySelector('#divisas-table tbody');
 const historicoDivisas = document.querySelector('#historico-divisas');
@@ -28,7 +30,7 @@ let libra_cobre_divisa = {};
 let tasa_desempleo_divisa = {};
 let tpm_divisa = {};
 
-// FETCH funcion
+// Traer la información desde la API
 
 export function getDivisa() {
     fetch(url)
@@ -38,6 +40,8 @@ export function getDivisa() {
             )
 };
 
+// Imprimi los valores después de traer datos desde la API
+
 export function imprimirTablaDivisas() {
     setTimeout(() => {
         imprimirValoresGlobales();
@@ -45,6 +49,8 @@ export function imprimirTablaDivisas() {
         // botonLimpiarTabla();
     }, 500)
 }
+
+// Guardar continuamente la información de la API 
 
 function conjuntoDivisas(data) {
     const { bitcoin, 
@@ -132,6 +138,8 @@ function conjuntoDivisas(data) {
         tpm_divisa)
 }
 
+// Imprimir tabla de valores globales
+
 function imprimirValoresGlobales() {
     const newDivisas = [...divisasArr]
     
@@ -152,6 +160,7 @@ function imprimirValoresGlobales() {
 
     })
 }
+// Imprimir valores historicos de las divisas en los gráficos
 
 function valoresHistoricosDivisas() {
     const historicosBtn = document.querySelectorAll('.button_historicos');
