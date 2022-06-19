@@ -8,7 +8,7 @@ const config = {
     type: 'line',
     data: {
         datasets:[{
-            label: "Historicos"
+            label: "Históricos"
         }]
     }
 };
