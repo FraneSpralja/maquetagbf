@@ -172,6 +172,8 @@ function valoresHistoricosDivisas() {
         
         btn.addEventListener('click', () => {
 
+            myChart.destroy()
+
             setTimeout(() => {
 
                 fetch(`${url}${btn.dataset.id}`)
@@ -180,17 +182,17 @@ function valoresHistoricosDivisas() {
                     // console.log(data)
                     imprimirGraficoDivisas(data)
                 })
-            }, 100)
+            }, 50)
             
         }
     )}
 )}
         
-function imprimirGraficoDivisas(data) {
-    myChart.destroy();
-    myChart = new Chart(ctx, config);
+function imprimirGraficoDivisas(info) {
+    clearData();
+    myChart = new Chart(ctx, {...config});
 
-    const { nombre, serie } = data
+    const { nombre, serie } = info
     myChart.data['datasets'][0].label = `${nombre}`;
 
 
@@ -201,6 +203,14 @@ function imprimirGraficoDivisas(data) {
         myChart.data['datasets'][0].data.push(valor);
         
     });
-
     myChart.update();
 }
+
+function clearData() {
+    const { data } = config;
+    const { labels, datasets } = data;
+
+    datasets[0].data.splice(0, datasets[0].data.length);
+    labels.splice(0, labels.length);
+}
+
