@@ -30,17 +30,6 @@ let tpm_divisa = {};
 
 // FETCH funcion
 
-const bitcoinArr = []
-const dolarArr = []
-const ufArr = []
-const utmArr = []
-const euroArr = []
-const imacecArr = []
-const ipcArr = []
-const libra_cobreArr = []
-const tasa_desempleoArr = []
-const tpmArr = []
-
 export function getDivisa() {
     fetch(url)
         .then( res => res.json())
@@ -172,8 +161,6 @@ function valoresHistoricosDivisas() {
         
         btn.addEventListener('click', () => {
 
-            myChart.destroy()
-
             setTimeout(() => {
 
                 fetch(`${url}${btn.dataset.id}`)
@@ -189,6 +176,7 @@ function valoresHistoricosDivisas() {
 )}
         
 function imprimirGraficoDivisas(info) {
+    myChart.destroy()
     clearData();
     myChart = new Chart(ctx, {...config});
 
@@ -213,4 +201,3 @@ function clearData() {
     datasets[0].data.splice(0, datasets[0].data.length);
     labels.splice(0, labels.length);
 }
-
