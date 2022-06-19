@@ -136,7 +136,7 @@ function prueba() {
     const newDivisas = [...divisasArr]
     
     newDivisas.forEach((data) => {
-        console.log(data)
+        // console.log(data)
 
         const { nombre, unidad_medida, valor, codigo } = data;
         const tablaRow = document.createElement('tr');
@@ -157,7 +157,7 @@ function valoresHistoricosDivisas() {
     const historicosBtn = document.querySelectorAll('.button_historicos');
 
     historicosBtn.forEach((btn) => {
-        console.log(btn)
+        // console.log(btn)
         btn.addEventListener('click', () => {            
             fetch(`${url}${btn.dataset.id}`)
             .then(res => res.json())
@@ -167,6 +167,20 @@ function valoresHistoricosDivisas() {
         }
     )}
 )}
+
+function imprimirGraficoDivisas(data) {
+    const myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            datasets: [{
+                label: `click para ver ${btn.dataset.name}`,
+                backgroundColor: 'red',
+                borderColor: 'blue',
+                borderWidth:1,
+            }]
+        }
+    })
+}
 
 // const bitcoin_valores = [...bitcoinArr];
 // const dolar_valores = [...dolarArr];
@@ -178,15 +192,3 @@ function valoresHistoricosDivisas() {
 // const libra_cobre_valores = [...libra_cobreArr];
 // const tasa_desempleo_valores = [...tasa_desempleoArr];
 // const tpm_valores = [...tpmArr];
-
-// const myChart = new Chart(ctx,
-//     {
-//         type: 'line',
-//         data: {
-//             datasets: [{
-//                 label: `click para ver ${btn.dataset.name}`,
-//                 backgroundColor: 'red',
-//                 borderColor: 'blue',
-//                 borderWidth:1,
-//             }]
-//         },
