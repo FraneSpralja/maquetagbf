@@ -41,8 +41,9 @@ export function getDivisa() {
 
 export function imprimirTablaDivisas() {
     setTimeout(() => {
-        prueba();
+        imprimirValoresGlobales();
         valoresHistoricosDivisas();
+        // botonLimpiarTabla();
     }, 500)
 }
 
@@ -132,7 +133,7 @@ function conjuntoDivisas(data) {
         tpm_divisa)
 }
 
-function prueba() {
+function imprimirValoresGlobales() {
     const newDivisas = [...divisasArr]
     
     newDivisas.forEach((data) => {
@@ -156,47 +157,71 @@ function prueba() {
 function valoresHistoricosDivisas() {
     const historicosBtn = document.querySelectorAll('.button_historicos');
     
+    // destroyChart()
     
     historicosBtn.forEach((btn) => {
         // console.log(btn)
         
-        btn.addEventListener('click', () => {  
+        btn.addEventListener('click', () => {
+
+            setTimeout(() => {
+
+                fetch(`${url}${btn.dataset.id}`)
+                .then(res => res.json())
+                .then(data => {
+                    // console.log(data)
+                    imprimirGraficoDivisas(data)
+                })
+            }, 100)
             
-            
-            fetch(`${url}${btn.dataset.id}`)
-            .then(res => res.json())
-            .then(data => {
-                // console.log(data)
-                imprimirGraficoDivisas(data)
-            })
         }
-        )}
-        )}
+    )}
+)}
         
 function imprimirGraficoDivisas(data) {
 
     const { nombre, serie } = data
-
-    console.log(ctx)
+    
     
     const myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        datasets: [{
-            label: nombre,
-            backgroundColor: 'red',
-            borderColor: 'blue',
-            borderWidth:1,
-        }]
-    }
-    })
-    
-    serie.revert().forEach((data) => {
-        
-        const { fecha, valor } = data;
+        type: 'line',
+        data: {
+            datasets:[
+                {
+                    label: `${nombre}`,
+                }
+            ]
+        }
+    });
+    myChart.render();
 
-        myChart.data['labels'].push(new Date(fecha).toLocaleDateString());
-        myChart.data['datasets'][0].data.push(valor)
+    // console.log(myChart.data[0].dataPoints)
+
+    serie.reverse().forEach((ele) => {
+        
+        const { fecha, valor } = ele;
+
+        console.log(data)
+
+        const variables = {
+            x: new Date(fecha).toLocaleDateString(),
+            y: valor
+        }
+
+        // myChart.data[0].dataPoints.push(variables)
+
         
     })
 }
+
+// export function destroyChart() {
+//     myChart.destroy();
+// }
+
+/*function botonLimpiarTabla() {
+    const limpiarBtn = document.createElement('button');
+    limpiarBtn.classList.add('botonLimpiar');
+    limpiarBtn.setAttribute('onclick', destroyChart());
+
+    historicoDivisas.insertBefore(limpiarBtn, document.querySelector('#myChart'));
+} */

@@ -594,6 +594,11 @@ a[id^="button-divisa"]{
     border-radius: 3px;
 }
 
+div#myChart {
+    width: auto;
+    height: 370px;
+}
+
 .modal-formulario {
     height: 100%;
     width: 100%;
