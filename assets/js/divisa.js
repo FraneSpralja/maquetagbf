@@ -191,10 +191,14 @@ function imprimirGraficoDivisas(data) {
     myChart = new Chart(ctx, config);
 
     const { nombre, serie } = data
+    myChart.data['datasets'][0].label = `${nombre}`;
+
 
     serie.reverse().forEach((ele) => {
         
         const { fecha, valor } = ele;
+        myChart.data['labels'].push(new Date(fecha).toLocaleDateString());
+        myChart.data['datasets'][0].data.push(valor);
         
     });
 
