@@ -144,7 +144,7 @@ function prueba() {
             <td>${nombre}</td>
             <td>${valor}</td>
             <td>${unidad_medida}</td>
-            <td><button class="button_historicos" id="${codigo}" data-id="${codigo}">Ver Historico</button></td>
+            <td><button class="button_historicos" id="${codigo}" data-id="${codigo}" data-name="${nombre}">Ver Historico</button></td>
         `
         tablaRow.innerHTML += tablaContenido;
 
@@ -155,40 +155,47 @@ function prueba() {
 
 function valoresHistoricosDivisas() {
     const historicosBtn = document.querySelectorAll('.button_historicos');
-
+    
+    
     historicosBtn.forEach((btn) => {
         // console.log(btn)
-        btn.addEventListener('click', () => {            
+        
+        btn.addEventListener('click', () => {  
+            
+            
             fetch(`${url}${btn.dataset.id}`)
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                // console.log(data)
+                imprimirGraficoDivisas(data)
             })
         }
-    )}
-)}
-
+        )}
+        )}
+        
 function imprimirGraficoDivisas(data) {
+
+    const { nombre, serie } = data
+
+    console.log(ctx)
+    
     const myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-            datasets: [{
-                label: `click para ver ${btn.dataset.name}`,
-                backgroundColor: 'red',
-                borderColor: 'blue',
-                borderWidth:1,
-            }]
-        }
+    type: 'line',
+    data: {
+        datasets: [{
+            label: nombre,
+            backgroundColor: 'red',
+            borderColor: 'blue',
+            borderWidth:1,
+        }]
+    }
+    })
+    
+    serie.forEach((data) => {
+        
+        const { fecha, valor } = data;
+
+
+
     })
 }
-
-// const bitcoin_valores = [...bitcoinArr];
-// const dolar_valores = [...dolarArr];
-// const uf_valores = [...ufArr];
-// const utm_valores = [...utmArr];
-// const euro_valores = [...euroArr];
-// const imacec_valores = [...imacecArr];
-// const ipc_valores = [...ipcArr];
-// const libra_cobre_valores = [...libra_cobreArr];
-// const tasa_desempleo_valores = [...tasa_desempleoArr];
-// const tpm_valores = [...tpmArr];
