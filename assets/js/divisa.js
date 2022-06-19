@@ -5,6 +5,8 @@ const ctx = document.getElementById('myChart').getContext('2d');
 
 // Objetos de captura
 
+const divisasArr = [];
+
 let bitcoin_divisa = {};
 let dolar_divisa = {};
 let uf_divisa = {};
@@ -15,7 +17,19 @@ let ipc_divisa = {};
 let libra_cobre_divisa = {};
 let tasa_desempleo_divisa = {};
 let tpm_divisa = {};
+
 // FETCH funcion
+
+const bitcoinArr = []
+const dolarArr = []
+const ufArr = []
+const utmArr = []
+const euroArr = []
+const imacecArr = []
+const ipcArr = []
+const libra_cobreArr = []
+const tasa_desempleoArr = []
+const tpmArr = []
 
 export function getDivisa() {
     fetch(url)
@@ -24,6 +38,13 @@ export function getDivisa() {
             conjuntoDivisas(data)
             )
 };
+
+export function imprimirTablaDivisas() {
+    setTimeout(() => {
+        prueba();
+        valoresHistoricosDivisas();
+    }, 500)
+}
 
 function conjuntoDivisas(data) {
     const { bitcoin, 
@@ -99,15 +120,41 @@ function conjuntoDivisas(data) {
     tpm_divisa.valor = tpmObj.valor;
     tpm_divisa.codigo = tpmObj.codigo;
 
-    console.log(bitcoin_divisa)
-    console.log(dolar_divisa)
-    console.log(uf_divisa)
-    console.log(utm_divisa)
-    console.log(euro_divisa)
-    console.log(imacec_divisa)
-    console.log(ipc_divisa)
-    console.log(libra_cobre_divisa)
-    console.log(tasa_desempleo_divisa)
-    console.log(tpm_divisa)
+    divisasArr.push(bitcoin_divisa,
+        dolar_divisa,
+        uf_divisa,
+        utm_divisa,
+        euro_divisa,
+        imacec_divisa,
+        ipc_divisa,
+        libra_cobre_divisa,
+        tasa_desempleo_divisa,
+        tpm_divisa)
 }
 
+function prueba() {
+    const newDivisas = [...divisasArr]
+    
+    newDivisas.forEach((data) => {
+        console.log(data)
+
+        const { nombre, unidad_medida, valor, codigo } = data;
+        const tablaRow = document.createElement('tr');
+        const tablaContenido = `
+            <td>${nombre}</td>
+            <td>${valor}</td>
+            <td>${unidad_medida}</td>
+            <td><button class="button_historicos" id="${codigo}" data-id="${codigo}">Ver Historico</button></td>
+        `
+        tablaRow.innerHTML += tablaContenido;
+
+        tablaDivisas.appendChild(tablaRow)
+
+    })
+}
+
+function valoresHistoricosDivisas() {
+    const historicosBtn = document.querySelectorAll('.button_historicos');
+
+    console.log(historicosBtn);
+}
