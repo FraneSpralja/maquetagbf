@@ -1,5 +1,8 @@
 // IMPORTS
-import { getDivisa, imprimirTablaDivisas  } from "./divisa.js";
+import { 
+    getDivisa, 
+    imprimirTablaDivisas, 
+} from "./divisa.js";
 import { 
     registroBtn, 
     newResgistroBtn, 
@@ -149,12 +152,15 @@ function resetFormularioHeader(){
 /* Mosatrar modales con los botones correspondientes */
 
 function activarModalInfo() {
+    const closDialogoBtnUno = document.querySelector('#ventanaUno div .close-dialog-button');
+    const closDialogoBtnDos = document.querySelector('#ventanaDos div .close-dialog-button');
+    const closDialogoBtntres = document.querySelector('#ventanaTres div .close-dialog-button');
+
     saberMasBtnUno.addEventListener('click', () => {
         const ventanaUno = document.querySelector('#ventanaUno');
-        const closDialogoBtn = document.querySelector('.close-dialog-button');
 
         ventanaUno.classList.remove('ventana-display-none');
-        closDialogoBtn.addEventListener('click', () => {
+        closDialogoBtnUno.addEventListener('click', () => {
             const ventanaUno = document.querySelector('#ventanaUno')
 
             ventanaUno.classList.add('ventana-display-none');
@@ -162,26 +168,26 @@ function activarModalInfo() {
     });
 
     saberMasBtnDos.addEventListener('click', () => {
-        const ventanaUno = document.querySelector('#ventanaUno');
-        const closDialogoBtn = document.querySelector('.close-dialog-button');
+        const ventanaDos = document.querySelector('#ventanaDos');
 
-        ventanaUno.classList.remove('ventana-display-none');
-        closDialogoBtn.addEventListener('click', () => {
-            const ventanaUno = document.querySelector('#ventanaUno')
 
-            ventanaUno.classList.add('ventana-display-none');
+        ventanaDos.classList.remove('ventana-display-none');
+        closDialogoBtnDos.addEventListener('click', () => {
+            const ventanaDos = document.querySelector('#ventanaDos')
+
+            ventanaDos.classList.add('ventana-display-none');
         });
     });
 
     saberMasBtnTres.addEventListener('click', () => {
-        const ventanaUno = document.querySelector('#ventanaUno');
-        const closDialogoBtn = document.querySelector('.close-dialog-button');
+        const ventanatres = document.querySelector('#ventanaTres');
+        
 
-        ventanaUno.classList.remove('ventana-display-none');
-        closDialogoBtn.addEventListener('click', () => {
-            const ventanaUno = document.querySelector('#ventanaUno')
+        ventanatres.classList.remove('ventana-display-none');
+        closDialogoBtntres.addEventListener('click', () => {
+            const ventanaTres = document.querySelector('#ventanaTres')
 
-            ventanaUno.classList.add('ventana-display-none');
+            ventanaTres.classList.add('ventana-display-none');
         });
     });
 }
