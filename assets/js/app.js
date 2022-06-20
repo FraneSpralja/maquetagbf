@@ -39,7 +39,7 @@ activarModalInfo();
 
 function eventListener() {
 
-    document.addEventListener('DOMContentLoaded', () => {
+    window.addEventListener('DOMContentLoaded', () => {
         iniciarApp()
         // Fetch e imprimir divisas
         getDivisa()
