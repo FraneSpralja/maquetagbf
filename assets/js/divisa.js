@@ -48,7 +48,7 @@ export function imprimirTablaDivisas() {
     setTimeout(() => {
         imprimirValoresGlobales();
         valoresHistoricosDivisas();
-    }, 100)
+    }, 500)
 }
 
 // Guardar continuamente la información de la API 
@@ -127,7 +127,8 @@ function conjuntoDivisas(data) {
     tpm_divisa.valor = tpmObj.valor;
     tpm_divisa.codigo = tpmObj.codigo;
 
-    divisasArr.push(bitcoin_divisa,
+    divisasArr.push(
+        bitcoin_divisa,
         dolar_divisa,
         uf_divisa,
         utm_divisa,
@@ -136,7 +137,10 @@ function conjuntoDivisas(data) {
         ipc_divisa,
         libra_cobre_divisa,
         tasa_desempleo_divisa,
-        tpm_divisa)
+        tpm_divisa
+    );
+
+    rescateValoresDivisasCinta(divisasArr)
 }
 
 // Imprimir tabla de valores globales
@@ -214,7 +218,7 @@ function clearData() {
 
 // Imprimir cinta
 
-export function rescateValoresDivisasCinta() {
+function rescateValoresDivisasCinta(data) {
     const divisasCinta = [...divisasArr];
 
         divisasCinta.forEach((divisa) => {

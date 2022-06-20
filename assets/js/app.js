@@ -2,7 +2,6 @@
 import { 
     getDivisa, 
     imprimirTablaDivisas,
-    rescateValoresDivisasCinta,
 } from "./divisa.js";
 import { 
     registroBtn, 
@@ -45,9 +44,6 @@ function eventListener() {
         // Fetch e imprimir divisas
         getDivisa()
         imprimirTablaDivisas()
-        setTimeout(() => {
-            rescateValoresDivisasCinta()
-        }, 500)
     });
 
     nombre.addEventListener('blur', validarFormularioHeader);
