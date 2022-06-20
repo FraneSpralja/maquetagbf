@@ -16,7 +16,7 @@ let myChart = new Chart(ctx, config);
 const cintaDivisas = document.querySelector('#cinta-hero ul');
 const bloqueCintaDivisas = document.querySelector('div#cinta-hero'); 
 
-
+const breakpoint = window.matchMedia("(min-width: 350px) and (max-width: 790px)")
 // Objetos de captura
 
 const divisasArr = [];
@@ -229,8 +229,13 @@ function rescateValoresDivisasCinta(data) {
             cintaDivisas.innerHTML += `<li><span><b style="color:#fff">${nombre}<b> - ${new Date().toLocaleDateString()} - <span style="color: #23b723;">${valor}</span></span> |</li>` 
         })
 
-        
-    cintaDivisas.classList.add('animacionCinta');
+    if(breakpoint.matches){
+        cintaDivisas.classList.add('animacionCinta-mobil')
+        cintaDivisas.classList.remove('animacionCinta')
+    }else{
+        cintaDivisas.classList.add('animacionCinta');
+        cintaDivisas.classList.remove('animacionCinta-mobil')
+    }    
     bloqueCintaDivisas.appendChild(cintaDivisas);
 }
     

@@ -3,6 +3,7 @@ import {
     getDivisa, 
     imprimirTablaDivisas,
 } from "./divisa.js";
+
 import { 
     registroBtn, 
     newResgistroBtn, 

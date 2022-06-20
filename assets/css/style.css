@@ -560,9 +560,13 @@ a#access-footer{
         width: 800vw;
     }
 
-    .animacionCinta {
-        animation-name: cinta;
-        animation-duration: 100s;
+    .animacionCinta-mobil {
+        animation-name: cinta-mobile;
+        animation-duration: 40s;
+        animation-timing-function: linear;
+        animation-play-state: running;
+        animation-direction: alternate-reverse;
+        animation-iteration-count: infinite;
     }
 
     .como-funciona {
@@ -829,5 +833,15 @@ div#myChart {
 
     100% {
         left: -91vw;
+    }
+}
+
+@keyframes cinta-mobile {
+    0% {
+        left: 0vw;
+    }
+
+    100% {
+        left: -710vw;
     }
 }
