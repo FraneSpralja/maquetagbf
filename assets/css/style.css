@@ -557,7 +557,12 @@ a#access-footer{
     }
 
     div#cinta-hero ul {
-        width: 100vw;
+        width: 800vw;
+    }
+
+    .animacionCinta {
+        animation-name: cinta;
+        animation-duration: 100s;
     }
 
     .como-funciona {

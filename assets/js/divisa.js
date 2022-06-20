@@ -46,8 +46,7 @@ export function getDivisa() {
         
 export function imprimirTablaDivisas() {
     setTimeout(() => {
-        imprimirValoresGlobales();
-        valoresHistoricosDivisas();
+            valoresHistoricosDivisas();
     }, 500)
 }
 
@@ -140,13 +139,14 @@ function conjuntoDivisas(data) {
         tpm_divisa
     );
 
-    rescateValoresDivisasCinta(divisasArr)
+    rescateValoresDivisasCinta(divisasArr);
+    imprimirValoresGlobales(divisasArr);
 }
 
 // Imprimir tabla de valores globales
 
-function imprimirValoresGlobales() {
-    const newDivisas = [...divisasArr]
+function imprimirValoresGlobales(data) {
+    const newDivisas = [...data]
     
     newDivisas.forEach((data) => {
         // console.log(data)
@@ -219,7 +219,7 @@ function clearData() {
 // Imprimir cinta
 
 function rescateValoresDivisasCinta(data) {
-    const divisasCinta = [...divisasArr];
+    const divisasCinta = [...data];
 
         divisasCinta.forEach((divisa) => {
             const { nombre, valor } = divisa;
