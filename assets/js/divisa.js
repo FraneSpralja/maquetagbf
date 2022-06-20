@@ -46,8 +46,8 @@ export function getDivisa() {
         
 export function imprimirTablaDivisas() {
     setTimeout(() => {
-            valoresHistoricosDivisas();
-    }, 500)
+        valoresHistoricosDivisas();
+    }, 1000)
 }
 
 // Guardar continuamente la información de la API 
@@ -169,10 +169,12 @@ function imprimirValoresGlobales(data) {
 
 function valoresHistoricosDivisas() {
     const historicosBtn = document.querySelectorAll('.button_historicos');
+    console.log(historicosBtn)
     
     historicosBtn.forEach((btn) => {
-        // console.log(btn)
-        
+        console.log(btn)
+
+
         btn.addEventListener('click', () => {
 
             setTimeout(() => {
