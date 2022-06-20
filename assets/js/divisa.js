@@ -40,15 +40,14 @@ export function getDivisa() {
         .then(data =>
             conjuntoDivisas(data)
             )
-};
-
-// Imprimi los valores después de traer datos desde la API
-
+        };
+        
+        // Imprimi los valores después de traer datos desde la API
+        
 export function imprimirTablaDivisas() {
     setTimeout(() => {
         imprimirValoresGlobales();
         valoresHistoricosDivisas();
-        rescateValoresDivisasCinta();
     }, 100)
 }
 
@@ -215,7 +214,7 @@ function clearData() {
 
 // Imprimir cinta
 
-function rescateValoresDivisasCinta() {
+export function rescateValoresDivisasCinta() {
     const divisasCinta = [...divisasArr];
 
         divisasCinta.forEach((divisa) => {

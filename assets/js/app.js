@@ -1,7 +1,8 @@
 // IMPORTS
 import { 
     getDivisa, 
-    imprimirTablaDivisas, 
+    imprimirTablaDivisas,
+    rescateValoresDivisasCinta,
 } from "./divisa.js";
 import { 
     registroBtn, 
@@ -39,11 +40,14 @@ activarModalInfo();
 
 function eventListener() {
 
-    window.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
         iniciarApp()
         // Fetch e imprimir divisas
         getDivisa()
         imprimirTablaDivisas()
+        setTimeout(() => {
+            rescateValoresDivisasCinta()
+        }, 500)
     });
 
     nombre.addEventListener('blur', validarFormularioHeader);
