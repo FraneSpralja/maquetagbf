@@ -197,7 +197,7 @@ div#cinta-hero {
 div#cinta-hero ul {
     list-style: none;
     overflow: hidden;
-    width: 4000vw;
+    width: 190vw;
     padding: 0;
     margin: 0;
     background-color: rgba(0, 0, 0, 0.569);
@@ -800,7 +800,7 @@ div#myChart {
 
 .animacionCinta {
     animation-name: cinta;
-    animation-duration: 400s;
+    animation-duration: 45s;
     animation-timing-function: linear;
     animation-play-state: running;
     animation-direction: alternate-reverse;
@@ -823,6 +823,6 @@ div#myChart {
     }
 
     100% {
-        left: -3900vw;
+        left: -91vw;
     }
 }

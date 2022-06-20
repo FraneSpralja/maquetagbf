@@ -49,7 +49,7 @@ export function imprimirTablaDivisas() {
         imprimirValoresGlobales();
         valoresHistoricosDivisas();
         rescateValoresDivisasCinta();
-    }, 500)
+    }, 100)
 }
 
 // Guardar continuamente la información de la API 
@@ -217,6 +217,62 @@ function clearData() {
 
 function rescateValoresDivisasCinta() {
     const divisasCinta = [...divisasArr];
+
+        divisasCinta.forEach((divisa) => {
+            const { nombre, valor } = divisa;
+                
+            cintaDivisas.innerHTML += `<li><span><b style="color:#fff">${nombre}<b> - ${new Date().toLocaleDateString()} - <span style="color: #23b723;">${valor}</span></span> |</li>` 
+        })
+
+        
+    cintaDivisas.classList.add('animacionCinta');
+    bloqueCintaDivisas.appendChild(cintaDivisas);
+}
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    /* function pintarDivisasEnCinta(cinta){
+        
+        // console.log(cinta)
+        
+        
+    } */    
+    
+    
+    
+    /*     
     const newCinta = [
         {nombre: 'bitcoin'},
         {nombre: 'dolar'},
@@ -230,120 +286,96 @@ function rescateValoresDivisasCinta() {
         {nombre: 'tpm'}
     ];
 
-    divisasCinta.forEach((divisa) => {
-        if(divisa.codigo == 'bitcoin'){
-            fetch(`${url}bitcoin`)
-                .then(res => res.json())
-                .then(bitcoin => {
-                    const { serie } = bitcoin;
-                    let newDivisa = [ ...serie ]
-                    newCinta[0].serie = newDivisa;
-                })
-        };
-        if(divisa.codigo == 'dolar'){
-            fetch(`${url}dolar`)
-                .then(res => res.json())
-                .then(dolar => {
-                    const { serie } = dolar;
-                    let newDivisa = [ ...serie ]
-                    newCinta[1].serie = newDivisa;
-                })
-        };
-        if(divisa.codigo == 'uf'){
-            fetch(`${url}uf`)
-                .then(res => res.json())
-                .then(uf => {
-                    const { serie } = uf;
-                    let newDivisa = [ ...serie ]
-                    newCinta[2].serie = newDivisa;
-                })
-        };
-        if(divisa.codigo == 'utm'){
-            fetch(`${url}utm`)
-                .then(res => res.json())
-                .then(utm => {
-                    const { serie } = utm;
-                    let newDivisa = [ ...serie ]
-                    newCinta[3].serie = newDivisa;
-                })
-        };
-        if(divisa.codigo == 'euro'){
-            fetch(`${url}euro`)
-                .then(res => res.json())
-                .then(euro => {
-                    const { serie } = euro;
-                    let newDivisa = [ ...serie ]
-                    newCinta[4].serie = newDivisa;
-                })
-        };
-        if(divisa.codigo == 'imacec'){
-            fetch(`${url}imacec`)
-                .then(res => res.json())
-                .then(imacec => {
-                    const { serie } = imacec;
-                    let newDivisa = [ ...serie ]
-                    newCinta[5].serie = newDivisa;
-                })
-        };
-        if(divisa.codigo == 'ipc'){
-            fetch(`${url}ipc`)
-                .then(res => res.json())
-                .then(ipc => {
-                    const { serie } = ipc;
-                    let newDivisa = [ ...serie ]
-                    newCinta[6].serie = newDivisa;
-                })
-        };
-        if(divisa.codigo == 'libra_cobre'){
-            fetch(`${url}libra_cobre`)
-                .then(res => res.json())
-                .then(libra_cobre => {
-                    const { serie } = libra_cobre;
-                    let newDivisa = [ ...serie ]
-                    newCinta[7].serie = newDivisa;
-                })
-        };
-        if(divisa.codigo == 'tasa_desempleo'){
-            fetch(`${url}tasa_desempleo`)
-                .then(res => res.json())
-                .then(tasa_desempleo => {
-                    const { serie } = tasa_desempleo;
-                    let newDivisa = [ ...serie ]
-                    newCinta[8].serie = newDivisa;
-                })
-        };
-        if(divisa.codigo == 'tpm'){
-            fetch(`${url}tpm`)
-                .then(res => res.json())
-                .then(tpm => {
-                    const { serie } = tpm;
-                    let newDivisa = [ ...serie ]
-                    newCinta[9].serie = newDivisa;
-                })
-            };
-
-        })
-        setTimeout(() => {
-            const cintaArray = [...newCinta];
-            cintaArray.forEach((divisa) => {
-                const { nombre, serie } = divisa;
-                    serie.forEach((data) => {
-                        const { fecha, valor } = data;
-                        
-                        cintaDivisas.innerHTML += `<li><span><b style="color:#fff">${nombre}<b> - ${new Date(fecha).toLocaleDateString()} - <span style="color: #23b723;">${valor}</span></span> |</li>` 
+divisasCinta.forEach((divisa) => {
+            if(divisa.codigo == 'bitcoin'){
+                fetch(`${url}bitcoin`)
+                    .then(res => res.json())
+                    .then(bitcoin => {
+                        const { serie } = bitcoin;
+                        let newDivisa = [ ...serie ]
+                        newCinta[0].serie = newDivisa;
                     })
-            })
-        }, 1500)
-
-        
-        cintaDivisas.classList.add('animacionCinta');
-        bloqueCintaDivisas.appendChild(cintaDivisas);
-
-}
-
-/* function pintarDivisasEnCinta(cinta){
-
-    // console.log(cinta)
+            };
+            if(divisa.codigo == 'dolar'){
+                fetch(`${url}dolar`)
+                    .then(res => res.json())
+                    .then(dolar => {
+                        const { serie } = dolar;
+                        let newDivisa = [ ...serie ]
+                        newCinta[1].serie = newDivisa;
+                    })
+            };
+            if(divisa.codigo == 'uf'){
+                fetch(`${url}uf`)
+                    .then(res => res.json())
+                    .then(uf => {
+                        const { serie } = uf;
+                        let newDivisa = [ ...serie ]
+                        newCinta[2].serie = newDivisa;
+                    })
+            };
+            if(divisa.codigo == 'utm'){
+                fetch(`${url}utm`)
+                    .then(res => res.json())
+                    .then(utm => {
+                        const { serie } = utm;
+                        let newDivisa = [ ...serie ]
+                        newCinta[3].serie = newDivisa;
+                    })
+            };
+            if(divisa.codigo == 'euro'){
+                fetch(`${url}euro`)
+                    .then(res => res.json())
+                    .then(euro => {
+                        const { serie } = euro;
+                        let newDivisa = [ ...serie ]
+                        newCinta[4].serie = newDivisa;
+                    })
+            };
+            if(divisa.codigo == 'imacec'){
+                fetch(`${url}imacec`)
+                    .then(res => res.json())
+                    .then(imacec => {
+                        const { serie } = imacec;
+                        let newDivisa = [ ...serie ]
+                        newCinta[5].serie = newDivisa;
+                    })
+            };
+            if(divisa.codigo == 'ipc'){
+                fetch(`${url}ipc`)
+                    .then(res => res.json())
+                    .then(ipc => {
+                        const { serie } = ipc;
+                        let newDivisa = [ ...serie ]
+                        newCinta[6].serie = newDivisa;
+                    })
+            };
+            if(divisa.codigo == 'libra_cobre'){
+                fetch(`${url}libra_cobre`)
+                    .then(res => res.json())
+                    .then(libra_cobre => {
+                        const { serie } = libra_cobre;
+                        let newDivisa = [ ...serie ]
+                        newCinta[7].serie = newDivisa;
+                    })
+            };
+            if(divisa.codigo == 'tasa_desempleo'){
+                fetch(`${url}tasa_desempleo`)
+                    .then(res => res.json())
+                    .then(tasa_desempleo => {
+                        const { serie } = tasa_desempleo;
+                        let newDivisa = [ ...serie ]
+                        newCinta[8].serie = newDivisa;
+                    })
+            };
+            if(divisa.codigo == 'tpm'){
+                fetch(`${url}tpm`)
+                    .then(res => res.json())
+                    .then(tpm => {
+                        const { serie } = tpm;
+                        let newDivisa = [ ...serie ]
+                        newCinta[9].serie = newDivisa;
+                    })
+                };
     
-
-} */
+            }) */
