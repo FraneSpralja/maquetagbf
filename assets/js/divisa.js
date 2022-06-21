@@ -148,21 +148,29 @@ function conjuntoDivisas(data) {
 function imprimirValoresGlobales(data) {
     const newDivisas = [...data]
     
+    const fragment = document.createDocumentFragment();
     newDivisas.forEach((data) => {
 
         const { nombre, unidad_medida, valor, codigo } = data;
         const tablaRow = document.createElement('tr');
-        const tablaContenido = `
-            <td>${nombre}</td>
-            <td>${valor}</td>
-            <td>${unidad_medida}</td>
-            <td><button class="button_historicos" id="${codigo}" data-id="${codigo}" data-name="${nombre}">Ver Historico</button></td>
-        `
-        tablaRow.innerHTML += tablaContenido;
+        const thName = document.createElement('th');
+        const tdUnidadMediad = document.createElement('td');
+        const tdValor = document.createElement('td');
+        const tdButton = document.createElement('td');
+        
+        thName.textContent = nombre;
+        tdUnidadMediad.textContent = unidad_medida;
+        tdValor.textContent = valor;
+        tdButton.innerHTML = `<button class="button_historicos" id="${codigo}" data-id="${codigo}" data-name="${nombre}">Ver Historico</button>`
 
-        tablaDivisas.appendChild(tablaRow)
+        tablaRow.appendChild(thName);
+        tablaRow.appendChild(tdValor);
+        tablaRow.appendChild(tdUnidadMediad);
+        tablaRow.appendChild(tdButton);
 
+        fragment.appendChild(tablaRow);
     })
+    tablaDivisas.appendChild(fragment)
 }
 // Imprimir valores historicos de las divisas en los gráficos
 
