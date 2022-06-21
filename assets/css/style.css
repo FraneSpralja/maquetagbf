@@ -668,7 +668,8 @@ div#myChart {
     height: 370px;
 }
 
-.modal-formulario {
+#sectionModalFormulario {
+    display: none;
     height: 100%;
     width: 100%;
     background-color: #353535b6;
@@ -677,10 +678,9 @@ div#myChart {
     left: 0;
     right: 0;
     bottom: 0;
-    display: flex;
 }
 
-#formularioContrato {
+.formularioContrato {
     width: 26vw;
     height: 50vh;
     margin: auto;
@@ -696,12 +696,12 @@ div#myChart {
     box-shadow: 0 0 4px #2f2f2f;
 }
 
-#formContainer {
+.formContainer {
     position: absolute;
     display: -webkit-inline-box;
 }
 
-#formularioContrato div.formBox {
+.formularioContrato div.formBox {
     position: relative;
     height: fit-content;
     width: 25vw;
@@ -716,11 +716,11 @@ div#myChart {
     margin-left: 1vw;
 } */
 
-#formularioContrato div.formBox span{
+.formularioContrato div.formBox span{
     text-align: center;
 }
 
-#formularioContrato div.formBox input {
+.formularioContrato div.formBox input {
     height: 4vh;
     border-radius: 5px;
     border: 1px solid #ccc;
@@ -730,25 +730,25 @@ div#myChart {
     width: 90%;
 }
 
-#formularioContrato div.formBox label {
+.formularioContrato div.formBox label {
     display: block;
     margin: auto;
     width: 90%;
 }
 
-#formularioContrato div.formBox div.button-box {
+.formularioContrato div.formBox div.button-box {
     width: 90%;
     padding: 10px 20px;
     display: flex;
 }
 
-#formularioContrato div.formBox div.buttonBox {
+.formularioContrato div.formBox div.buttonBox {
     display: flex;
     column-gap: 14px;
     flex-flow: row;
 }
 
-#formularioContrato div.formBox div.buttonBox button {
+.formularioContrato div.formBox div.buttonBox button {
     padding: 7px 15px;
     border-radius: 10px;
     background: linear-gradient(180deg, #aab600, #98a302);

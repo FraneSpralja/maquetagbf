@@ -10,12 +10,34 @@ const breakpoint = window.matchMedia("(min-width: 350px) and (max-width: 790px)"
 
 const er = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-export function modalFormulario() {
-    const divModalFormulario = document.createElement('div');
-    divModalFormulario.classList.add('modal-formulario');
-    const formBox = template.querySelectorAll('.formBox');
+export function activarModalFormulario() {
 
-    formBox.forEach((form) => {
-
+    registroBtn.addEventListener('click', () => {
+        sectionModal.classList.add('fade')
+        sectionModal.style.display = 'flex'
+        modalFormulario();
     })
+    newResgistroBtn.addEventListener('click', () => {
+        sectionModal.classList.add('fade')
+        sectionModal.style.display = 'flex'
+        modalFormulario();
+    })
+    bottomResgistroBtn.addEventListener('click', () => {
+        sectionModal.classList.add('fade')
+        sectionModal.style.display = 'flex'
+        modalFormulario();
+    })
+
+}
+
+function modalFormulario() {
+    const formulario = document.createElement('form');
+    formulario.classList.add('formularioContrato', 'formContainer')
+    formulario.classList.add('modal-formulario');
+    const clone = template.cloneNode(true)
+    fragment.appendChild(clone)
+    formulario.appendChild(fragment)
+
+    sectionModal.appendChild(formulario)
+    console.log(sectionModal)
 }

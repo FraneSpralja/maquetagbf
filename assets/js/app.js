@@ -5,11 +5,7 @@ import {
 } from "./divisa.js";
 
 import { 
-    modalFormulario,
-    // registroBtn, 
-    // newResgistroBtn, 
-    // bottomResgistroBtn, 
-    // modalFormulario 
+    activarModalFormulario,
 } from "./formulario.js";
 
 // VARIABLES
@@ -28,15 +24,13 @@ const saberMasBtnDos = document.querySelector('#funciona-button-dos');
 const saberMasBtnTres = document.querySelector('#funciona-button-tres');
 // const ventanaUno = document.querySelector('#ventanaUno');
 
-// Clean Chart
-const limpiarBtn = document.querySelector('#cleanChart')
-
 // Expresion Regular
 const er = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
 // EVENTOS
 eventListener();
 activarModalInfo();
+activarModalFormulario();
 
 
 function eventListener() {
@@ -46,7 +40,6 @@ function eventListener() {
         // Fetch e imprimir divisas
         getDivisa()
         imprimirTablaDivisas()
-        modalFormulario()
     });
 
     nombre.addEventListener('blur', validarFormularioHeader);
@@ -54,10 +47,6 @@ function eventListener() {
     riesgo.addEventListener('change', validarFormularioHeader);
 
     formulario.addEventListener('submit', enviarFormularioHeader);
-    // registroBtn.addEventListener('click', modalFormulario);
-    // newResgistroBtn.addEventListener('click', modalFormulario);
-    // bottomResgistroBtn.addEventListener('click', modalFormulario);
-
 };
 // FUNCIONES
 
