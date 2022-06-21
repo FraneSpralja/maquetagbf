@@ -5,10 +5,11 @@ import {
 } from "./divisa.js";
 
 import { 
-    registroBtn, 
-    newResgistroBtn, 
-    bottomResgistroBtn, 
-    modalFormulario 
+    modalFormulario,
+    // registroBtn, 
+    // newResgistroBtn, 
+    // bottomResgistroBtn, 
+    // modalFormulario 
 } from "./formulario.js";
 
 // VARIABLES
@@ -45,6 +46,7 @@ function eventListener() {
         // Fetch e imprimir divisas
         getDivisa()
         imprimirTablaDivisas()
+        modalFormulario()
     });
 
     nombre.addEventListener('blur', validarFormularioHeader);
@@ -52,9 +54,9 @@ function eventListener() {
     riesgo.addEventListener('change', validarFormularioHeader);
 
     formulario.addEventListener('submit', enviarFormularioHeader);
-    registroBtn.addEventListener('click', modalFormulario);
-    newResgistroBtn.addEventListener('click', modalFormulario);
-    bottomResgistroBtn.addEventListener('click', modalFormulario);
+    // registroBtn.addEventListener('click', modalFormulario);
+    // newResgistroBtn.addEventListener('click', modalFormulario);
+    // bottomResgistroBtn.addEventListener('click', modalFormulario);
 
 };
 // FUNCIONES
