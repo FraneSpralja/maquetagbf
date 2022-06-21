@@ -149,7 +149,6 @@ function imprimirValoresGlobales(data) {
     const newDivisas = [...data]
     
     newDivisas.forEach((data) => {
-        // console.log(data)
 
         const { nombre, unidad_medida, valor, codigo } = data;
         const tablaRow = document.createElement('tr');
@@ -169,24 +168,18 @@ function imprimirValoresGlobales(data) {
 
 function valoresHistoricosDivisas() {
     const historicosBtn = document.querySelectorAll('.button_historicos');
-    console.log(historicosBtn)
-    
+
     historicosBtn.forEach((btn) => {
-        console.log(btn)
-
-
         btn.addEventListener('click', () => {
 
             setTimeout(() => {
-
                 fetch(`${url}${btn.dataset.id}`)
                 .then(res => res.json())
                 .then(data => {
-                    // console.log(data)
                     imprimirGraficoDivisas(data);
                 })
             }, 50)
-            
+
         }
     )}
 )}
@@ -195,17 +188,13 @@ function imprimirGraficoDivisas(info) {
     myChart.destroy()
     clearData();
     myChart = new Chart(ctx, {...config});
-
     const { nombre, serie } = info
     myChart.data['datasets'][0].label = `${nombre}`;
 
-
     serie.reverse().forEach((ele) => {
-        
         const { fecha, valor } = ele;
         myChart.data['labels'].push(new Date(fecha).toLocaleDateString());
         myChart.data['datasets'][0].data.push(valor);
-        
     });
     myChart.update();
 }
@@ -223,11 +212,10 @@ function clearData() {
 function rescateValoresDivisasCinta(data) {
     const divisasCinta = [...data];
 
-        divisasCinta.forEach((divisa) => {
-            const { nombre, valor } = divisa;
-                
-            cintaDivisas.innerHTML += `<li><span><b style="color:#fff">${nombre}<b> - ${new Date().toLocaleDateString()} - <span style="color: #23b723;">${valor}</span></span> |</li>` 
-        })
+    divisasCinta.forEach((divisa) => {
+        const { nombre, valor } = divisa;
+        cintaDivisas.innerHTML += `<li><span><b style="color:#fff">${nombre}<b> - ${new Date().toLocaleDateString()} - <span style="color: #23b723;">${valor}</span></span> |</li>` 
+    })
 
     if(breakpoint.matches){
         cintaDivisas.classList.add('animacionCinta-mobil')

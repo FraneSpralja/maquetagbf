@@ -56,7 +56,6 @@ function eventListener() {
     newResgistroBtn.addEventListener('click', modalFormulario);
     bottomResgistroBtn.addEventListener('click', modalFormulario);
 
-
 };
 // FUNCIONES
 
