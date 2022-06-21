@@ -5,7 +5,7 @@ import {
 } from "./divisa.js";
 
 import { 
-    activarModalFormulario,
+    formularioEventListener,
 } from "./formulario.js";
 
 // VARIABLES
@@ -30,7 +30,7 @@ const er = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0
 // EVENTOS
 eventListener();
 activarModalInfo();
-activarModalFormulario();
+formularioEventListener();
 
 
 function eventListener() {
