@@ -27,7 +27,6 @@ export function formularioEventListener() {
         sectionModal.style.display = 'flex'
         modalFormulario();
     })
-
 }
 
 function modalFormulario() {
@@ -42,9 +41,19 @@ function modalFormulario() {
     
     formulario.appendChild(divContainer);
     sectionModal.appendChild(formulario);
-    console.log(sectionModal);
     
+    inicioBotonModal()
     funcionalidadModalFormulario()
+    validacionEventListener()
+
+    formulario.addEventListener('submit', enviarFormularioModal);
+
+    document.querySelectorAll('span.cerrarModal').forEach((btn) => {
+        btn.addEventListener('click', () => {
+            sectionModal.removeChild(formulario);
+            sectionModal.style.display = 'none';
+        })
+    })
 }
 
 function funcionalidadModalFormulario(){
@@ -101,3 +110,112 @@ function funcionalidadModalFormulario(){
     });
 };
 
+function validacionEventListener() {
+    const nombre = document.querySelector('.formBox input[name="nombre"]');
+    const email = document.querySelector('.formBox input[name="email"]');
+    const telefono = document.querySelector('.formBox input[name="telefono"]');
+    const rut = document.querySelector('.formBox input[name="rut"]');
+    const comuna = document.querySelector('.formBox input[name="comuna"]');
+    const direccion = document.querySelector('.formBox input[name="direccion"]');
+    const profesion = document.querySelector('.formBox input[name="profesion"]');
+
+    nombre.addEventListener('blur', validarFormularioModal);
+    email.addEventListener('blur', validarFormularioModal);
+    telefono.addEventListener('blur', validarFormularioModal);
+    rut.addEventListener('blur', validarFormularioModal);
+    comuna.addEventListener('blur', validarFormularioModal);
+    direccion.addEventListener('blur', validarFormularioModal);
+    profesion.addEventListener('blur', validarFormularioModal);
+}
+
+function validarFormularioModal(e) {
+
+    if(e.target.value.length !== 0) {
+        const error = document.querySelector('p.error')
+        if(error){
+            error.remove();
+        }
+
+        e.target.classList.remove('input-error');
+        e.target.classList.add('input-success');
+    }else{
+        e.target.classList.add('input-error');
+        e.target.classList.remove('input-success');
+
+        mostrarError('Los campos son obligatorios');
+    }
+
+    if(e.target.name === 'email'){
+
+        if(er.test(e.target.value)){
+            const error = document.querySelector('p.error')
+            if(error){
+                error.remove();
+            }
+    
+            e.target.classList.remove('input-error');
+            e.target.classList.add('input-success');
+        }else{
+            e.target.classList.add('input-error');
+            e.target.classList.remove('input-success');
+    
+            mostrarError('El correo no es válido');
+        }
+    }
+
+    habilitarButtonSubmit()
+}
+
+function habilitarButtonSubmit() {
+
+    const nombre = document.querySelector('.formBox input[name="nombre"]');
+    const email = document.querySelector('.formBox input[name="email"]');
+    const telefono = document.querySelector('.formBox input[name="telefono"]');
+    const rut = document.querySelector('.formBox input[name="rut"]');
+    const comuna = document.querySelector('.formBox input[name="comuna"]');
+    const direccion = document.querySelector('.formBox input[name="direccion"]');
+    const profesion = document.querySelector('.formBox input[name="profesion"]');
+
+    if(er.test(email.value) && nombre.value !== '' && telefono.value !== '' && rut.value !== '' && comuna.value !== '' && direccion.value !== '' && profesion.value !== ''){
+        document.querySelector('.buttonBox button[type="submit"]').disabled = false;
+        document.querySelector('.buttonBox button[type="submit"]').classList.remove('button-disabled')
+    }
+}
+
+function mostrarError(mensaje){
+
+    const mensajeError = document.createElement('p');
+    mensajeError.textContent = mensaje;
+    mensajeError.classList.add('error', 'mensaje-error', 'mensaje-modal')
+
+    const errores = document.querySelectorAll('.error');
+        if(errores.length === 0) {
+            sectionModal.appendChild(mensajeError);
+    }
+}
+
+function enviarFormularioModal(e) {
+    e.preventDefault();
+
+    const parrafoSuccess = document.createElement('p');
+    parrafoSuccess.textContent = `El formulario ha sido enviado.`;
+    parrafoSuccess.classList.add('mensaje-success', 'mensaje-modal');
+
+    sectionModal.appendChild(parrafoSuccess);
+
+    setTimeout(() => {
+        parrafoSuccess.remove();
+
+        resetFormularioModal();
+    }, 3000)
+}
+
+function resetFormularioModal(){
+    document.querySelector('.formularioContrato').reset();
+    inicioBotonModal();
+}
+
+function inicioBotonModal() {
+    document.querySelector('.buttonBox button[type="submit"]').disabled = true;
+    document.querySelector('.buttonBox button[type="submit"]').classList.add('button-disabled');
+}

@@ -640,6 +640,13 @@ a#access-footer{
     color: #000;
 }
 
+.mensaje-modal {
+    display: block;
+    margin: auto;
+    margin-top: 15vh;
+    padding: 20px 130px;
+}
+
 .mensaje-success {
     text-align: center;
     padding-top: 5px;
@@ -762,24 +769,17 @@ div#myChart {
 
 .fade {
     animation-name: fade;
-    animation-duration: 2s;
+    animation-duration: .5s;
 }
 
-#cerrarFormulario {
-    position: relative;
-    display: block;
-    top: 20.5vh;
-    left: 62vw;
-    display: block;
+span.cerrarModal {
+    position: absolute;
+    right: 1vw;
     height: 20px;
     width: 20px;
-    background: #dddddd;
-    color: #151515;
+    background: #e7e7e7;
     border-radius: 50%;
-    text-align: center;
-    font-size: 17px;
-    z-index: 1;
-    box-shadow: 0 0 4px #2f2f2f;
+    box-shadow: 0 0 4px #000;
     cursor: pointer;
 }
 
