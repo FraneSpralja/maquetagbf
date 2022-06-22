@@ -1,4 +1,8 @@
 // IMPORTS
+import {
+    clienteNuevo
+} from "./firebase.js"
+
 import { 
     getDivisa, 
     imprimirTablaDivisas,
@@ -14,6 +18,7 @@ import {
 const formulario = document.querySelector('#formulario');
 const nombre = document.querySelector('#formulario .form-box input[type="text"]');
 const correo = document.querySelector('#formulario .form-box input[type="email"]');
+const telefono = document.querySelector('#formulario .form-box input[type="number"]');
 const riesgo = document.querySelector('#formulario .form-box select');
 const heroBtn = document.querySelector('#hero-form-button');
 const resultadoHeader = document.querySelector('#resultadoHeader')
@@ -107,6 +112,8 @@ function enviarFormularioHeader(e) {
 
     resultadoHeader.appendChild(parrafoSuccess);
 
+    agregarClienteEnBBDD();
+
     setTimeout(() => {
         parrafoSuccess.remove();
 
@@ -181,4 +188,11 @@ function activarModalInfo() {
             ventanaTres.classList.add('ventana-display-none');
         });
     });
+}
+
+// FIREBASE
+
+function agregarClienteEnBBDD() {
+
+    clienteNuevo(nombre.value, correo.value, telefono.value, riesgo.value)
 }

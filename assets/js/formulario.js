@@ -1,3 +1,5 @@
+import { clienteContrato } from './firebase.js'
+
 export const registroBtn = document.querySelector('#access-button');
 export const newResgistroBtn = document.querySelector('#news-register');
 export const bottomResgistroBtn = document.querySelector('#access-footer');
@@ -203,6 +205,8 @@ function enviarFormularioModal(e) {
 
     sectionModal.appendChild(parrafoSuccess);
 
+    agregarClienteEnBBDD()
+
     setTimeout(() => {
         parrafoSuccess.remove();
 
@@ -218,4 +222,18 @@ function resetFormularioModal(){
 function inicioBotonModal() {
     document.querySelector('.buttonBox button[type="submit"]').disabled = true;
     document.querySelector('.buttonBox button[type="submit"]').classList.add('button-disabled');
+}
+
+// FIREBASE
+
+function agregarClienteEnBBDD() {
+    const nombre = document.querySelector('.formBox input[name="nombre"]')
+    const email = document.querySelector('.formBox input[name="email"]')
+    const telefono = document.querySelector('.formBox input[name="telefono"]')
+    const rut = document.querySelector('.formBox input[name="rut"]')
+    const comuna = document.querySelector('.formBox input[name="comuna"]')
+    const direccion = document.querySelector('.formBox input[name="direccion"]')
+    const profesion = document.querySelector('.formBox input[name="profesion"]')
+
+    clienteContrato(nombre.value, email.value, telefono.value, rut.value, comuna.value, direccion.value, profesion.value)
 }
