@@ -819,7 +819,7 @@ span.cerrarModal {
     animation-duration: 45s;
     animation-timing-function: linear;
     animation-play-state: running;
-    animation-direction: alternate-reverse;
+    animation-direction: reverse;
     animation-iteration-count: infinite;
 }
 
