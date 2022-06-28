@@ -185,7 +185,7 @@ form#formulario{
 
 div#cinta-hero {
     grid-area: cinta;
-    position: absolute;
+    /* position: absolute; */
     margin-top: auto;
     overflow: hidden;
     bottom: 28.5vh;
@@ -534,7 +534,8 @@ a#access-footer{
     }
 
     header#header {
-        height: 110vh;
+        height: 100%;
+        padding: 30px 10px 50px;
     }
 
     div#hero-card {
@@ -557,7 +558,7 @@ a#access-footer{
     }
 
     div#cinta-hero ul {
-        width: 800vw;
+        width:900vw;
     }
 
     .animacionCinta-mobil {
