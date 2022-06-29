@@ -491,6 +491,85 @@ a#access-footer{
     display: block;
 }
 
+#conceptos {
+    padding: 20px 50px;
+}
+
+#conceptos-box {
+    display: flex;
+}
+
+.card-conceptos {
+    width: 250px;
+    height: 250px;
+    margin: auto;
+    border: 1px solid #000;
+    border-radius: 7px;
+    box-sizing: border-box;
+    padding-left: 10px;
+    padding-right: 10px;
+    cursor: pointer;
+    transition-property: box-shadow;
+    transition-duration: .5s;
+    transition-delay: .1s;
+    transition-timing-function: linear;
+}
+
+.card-icon {
+    font-size: 3vw;
+    text-align: center;
+}
+
+.card-icon i {
+    display: block;
+    margin-top: 6vh;
+    margin-bottom: 2vh;
+}
+
+.card-conceptos > .card-title {
+    text-align: center;
+    display: block;
+    margin: auto;
+}
+
+.fadeUp-box {
+    display: flex;
+    width: 250px;
+    height: 0px;
+    position: relative;
+    background-color: #00376f;
+    bottom: 8.2vw;
+    right: 0.5vw;
+    color: transparent;
+    box-shadow: none;
+    border-radius: 7px;
+    transition-property: height, color, box-shadow;
+    transition-duration: .5s;
+    transition-delay: .1s;
+    transition-timing-function: linear;
+}
+
+.fadeUp-box > span {
+    display: block;
+    margin: auto;
+    text-align: center;
+}
+
+.card-conceptos:hover > .fadeUp-box {
+    color: #fff;
+    font-weight: bold;
+    height: 250px;
+}
+
+.card-conceptos:hover {
+    box-shadow: 0 0 10px #4b589d;
+}
+
+.fadeUp-box-one {
+    bottom: 18.4vh;
+    left: -11px;
+}
+
 /* BREAKPOINTS */
 
 @media (min-width: 350px) and (max-width: 790px) {
@@ -614,6 +693,25 @@ a#access-footer{
     .close-dialog-button {
         bottom: 44vh;
         left: 80vw;
+    }
+
+    #conceptos-box {
+        flex-flow: column;
+        row-gap: 20px;
+    }
+
+    .card-icon {
+        font-size: 15vw;
+    }
+
+    .fadeUp-box {
+        bottom: 12vh;
+        right: 3vw;
+    }
+
+    .fadeUp-box-one {
+        bottom: 14.8vh;
+        left: -11px;
     }
 }
 
