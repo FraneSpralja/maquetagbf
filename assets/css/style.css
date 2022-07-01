@@ -538,8 +538,8 @@ a#access-footer{
     height: 0px;
     position: relative;
     background-color: #00376f;
-    bottom: 8.2vw;
-    right: 0.5vw;
+    margin-top: -8.2vw;
+    margin-left: -0.5vw;
     color: transparent;
     box-shadow: none;
     border-radius: 7px;
@@ -566,8 +566,8 @@ a#access-footer{
 }
 
 .fadeUp-box-one {
-    bottom: 18.4vh;
-    left: -11px;
+    margin-top: -18.4vh;
+    margin-left: -1.2vh;
 }
 
 /* BREAKPOINTS */
@@ -705,13 +705,13 @@ a#access-footer{
     }
 
     .fadeUp-box {
-        bottom: 12vh;
-        right: 3vw;
+        margin-top: -102px;
+        margin-left: -8px;
     }
 
     .fadeUp-box-one {
-        bottom: 14.8vh;
-        left: -11px;
+        margin-top: -33px;
+        margin-left: 0px;
     }
 }
 
