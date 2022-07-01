@@ -139,8 +139,8 @@ function conjuntoDivisas(data) {
         tpm_divisa
     );
 
-    rescateValoresDivisasCinta(divisasArr);
     imprimirValoresGlobales(divisasArr);
+    rescateValoresDivisasCinta(divisasArr);
 }
 
 // Imprimir tabla de valores globales
