@@ -44,7 +44,9 @@ function eventListener() {
         iniciarApp()
         // Fetch e imprimir divisas
         getDivisa()
-        imprimirTablaDivisas()
+        setTimeout(() => {
+            imprimirTablaDivisas()
+        }, 500)
     });
 
     nombre.addEventListener('blur', validarFormularioHeader);
