@@ -12,6 +12,10 @@ import {
     formularioEventListener,
 } from "./formulario.js";
 
+import {
+    burgerMenu,
+} from './menu.js'
+
 // VARIABLES
 
 //Formulario Header
@@ -47,6 +51,7 @@ function eventListener() {
         setTimeout(() => {
             imprimirTablaDivisas()
         }, 500)
+        burgerMenu()
     });
 
     nombre.addEventListener('blur', validarFormularioHeader);

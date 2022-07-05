@@ -583,17 +583,21 @@ a#access-footer{
     margin-left: -1.2vh;
 }
 
+/* burguer menu */
+a#menu_burger {
+    display: none;
+}
+
 /* BREAKPOINTS */
 
 @media (min-width: 350px) and (max-width: 790px) {
     nav {
         display: grid;
-        grid-template-areas: 
-        "logo"
-        "menu"
-        "registro"
-        ;
-        grid-template-columns: 100%;
+        grid-template-areas:
+            "logo logo"
+            "registro menu";
+        grid-template-columns: 50% 50%;
+        row-gap: 20px;
     }
 
     #brand-logo {
@@ -601,13 +605,39 @@ a#access-footer{
         margin-left: auto;
     }
 
+    #brand-logo img {
+        width: auto;
+        height: 70px;
+    }
+
     .nav-menu {
         grid-area: menu;
         padding-bottom: 10px;
     }
 
+    .nav-menu ul#menu {
+        position: absolute;
+        width: 100%;
+        height: 100vh;
+        background: red;
+        right: 0;
+        padding-top: 2vh;
+        display: flex;
+        flex-flow: column;
+        transition-property: top, opacity;
+        transition-duration: .3s;
+        transition-timing-function: linear;
+    }
+
     #menu .list-item {
-        font-size: 14px;
+        font-size: 18px;
+        float: inherit;
+        padding: 30px 20px;
+        text-align: center;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 10vh !important;
     }
 
     .nav-access {
@@ -893,6 +923,28 @@ span.cerrarModal {
     border-radius: 50%;
     box-shadow: 0 0 4px #000;
     cursor: pointer;
+}
+
+.open-menu{
+    display: block !important;
+    margin: auto;
+}
+
+.open-menu i {
+    display: block;
+    margin: auto;
+    font-size: 28px;
+    color: #fff;
+}
+
+.menu-close {
+    top: -110vh;
+    opacity: 0;
+}
+
+.menu-open {
+    top: 17vh;
+    opacity: 1;
 }
 
 @media (min-width: 350px) and (max-width: 790px) {
