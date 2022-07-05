@@ -32,7 +32,7 @@ nav div {
 
 #brand-logo img{
     width: auto;    
-    height: 40px;
+    height: 70px;
 }
 
 #menu{
@@ -47,7 +47,8 @@ nav div {
 #menu .list-item a {
     text-decoration: none;
     color: #fff;
-    padding: 3px 5px;
+    padding: 3px 50px;
+    font-size: 20px;
 }
 
 .nav-access{
@@ -62,7 +63,7 @@ nav div {
 }
 
 #access-button {
-    padding: 5px 20px;
+    padding: 10px 30px;
     background-color: #aab600;
     color: #f0f0f0;
     border-radius: 7px;
@@ -390,7 +391,8 @@ footer#footer{
 }
 
 div.footer-box{
-    display: block;
+    display: flex;
+    flex-flow: column;
     margin: auto;
     height: 100%;
 }
@@ -438,10 +440,12 @@ ul#social-menu li.social-icon a{
 }
 
 a#access-footer{
-    padding: 5px 20px;
+    padding: 10px 30px;
     background-color: #aab600;
     color: #f0f0f0;
     border-radius: 7px;
+    display: block;
+    margin: auto;
 }
 
 /* VENTANA DE DIALOGO */
@@ -781,6 +785,10 @@ a#menu_burger {
 
     .card-dialogo-header img {
         margin-bottom: 20px;
+    }
+
+    footer#footer {
+        flex-flow: column;
     }
 }
 
