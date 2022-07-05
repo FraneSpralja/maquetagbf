@@ -237,7 +237,7 @@ section#how-it-works{
 }
 
 .card-funciona{
-    height: 300px;
+    height: 250px;
     width: 200px;
     background-color: #353535;
     padding: 20px;
@@ -264,13 +264,15 @@ section#how-it-works{
     margin-bottom: 20px;
 }
 
-.funciona-number span {
+.funciona-number img {
     font-family:'Times New Roman', Times, serif;
-    font-size: 25px;
+    width: 50px;
+    height: auto;
     font-weight: bold;
     display: block;
     margin: auto;
     cursor: pointer !important;
+    filter: blur();
 }
 
 .card-funciona h3 {
@@ -317,7 +319,8 @@ div.news-newsletter-box div h3 {
     width: 60%;
     padding: 3px 7px;
     border-radius: 7px;
-    background-color: #3d3def;
+    background-color: #00376f;
+    border: 1px solid #085db3;
     color: #fff;
 }
 
@@ -463,16 +466,25 @@ a#access-footer{
     background-color: #fff;
     padding: 10px 15px;
     border-radius: 10px;
+    box-sizing: border-box;
+}
+
+.card-dialogo-header {
+    max-height: 300px;
+    padding: 30px;
+    box-sizing: border-box;
 }
 
 .card-dialogo-header img{
-    width: 400px;
+    width: 60%;
     height: auto;
     display: block;
     margin: auto;
+    margin-bottom: 60px;
 }
 
 .card-dialogo-body{
+    margin-top: auto;
     padding-bottom: 10px;
     line-height: 1.5;
 }
