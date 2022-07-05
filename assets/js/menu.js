@@ -7,6 +7,7 @@ export function burgerMenu() {
     activarBurgerMenu()
 
     burger.addEventListener('click', abrirMenu)
+    menu.addEventListener('click', abrirMenu)
 }
 
 function activarBurgerMenu() {
