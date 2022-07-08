@@ -4,7 +4,13 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.3/firebase
 import {
     getFirestore,
     collection,
+    doc, 
     addDoc,
+    getDocs,
+    deleteDoc,
+    onSnapshot,
+    getDoc,
+    updateDoc,
 } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-firestore.js"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -44,3 +50,19 @@ export const clienteNuevo = (nombre, email, telefono, riesgo) => {
         riesgo: riesgo
     })
 };
+
+// export const getClientes = async () => await getDocs(collection(db, 'clientesContrato'));
+
+export const onGetClientes = (callback) => {
+    onSnapshot(collection(db, 'clientesContrato'), callback)
+}
+
+export const deleteCliente = (id) => {
+    deleteDoc(doc(db, 'clientesContrato', id));
+}
+
+export const getCliente = (id) => getDoc(doc(db, 'clientesContrato', id));
+
+export const updateCliente = (id, nuevosDatos) => {
+    updateDoc(doc(db, 'clientesContrato', id), nuevosDatos)
+}
