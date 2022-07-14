@@ -1,4 +1,4 @@
-import { clienteContrato } from './firebase.js'
+import { clienteContrato, verificarCorreoElectrónico } from './firebase.js'
 
 export const registroBtn = document.querySelector('#access-button');
 export const newResgistroBtn = document.querySelector('#news-register');
@@ -48,7 +48,10 @@ function modalFormulario() {
     funcionalidadModalFormulario()
     validacionEventListener()
 
-    formulario.addEventListener('submit', enviarFormularioModal);
+    formulario.addEventListener('submit', () =>  {
+        enviarFormularioModal()
+        verificarCorreoElectrónico()
+    });
 
     document.querySelectorAll('span.cerrarModal').forEach((btn) => {
         btn.addEventListener('click', () => {
@@ -236,4 +239,18 @@ function agregarClienteEnBBDD() {
     const profesion = document.querySelector('.formBox input[name="profesion"]')
 
     clienteContrato(nombre.value, email.value, telefono.value, rut.value, comuna.value, direccion.value, profesion.value)
+}
+
+function enviarVerificacion() {
+    const email = document.querySelector('.formBox input[name="email"]').value;
+
+    const actionCodeSettings = {
+        // URL you want to redirect back to. The domain (www.example.com) for this
+        // URL must be in the authorized domains list in the Firebase Console.
+        url: 'https://inteligenciafinanciera.netlify.app/auth.html',
+        // This must be true.
+        handleCodeInApp: true,
+    };
+
+    verificarCorreoElectrónico(email, actionCodeSettings);
 }

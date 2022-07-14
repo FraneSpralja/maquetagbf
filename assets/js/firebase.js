@@ -70,10 +70,8 @@ export const updateCliente = (id, nuevosDatos) => {
     updateDoc(doc(db, 'clientesContrato', id), nuevosDatos)
 }
 
-const actionCodeSettings = {
-    // URL you want to redirect back to. The domain (www.example.com) for this
-    // URL must be in the authorized domains list in the Firebase Console.
-    url: 'https://www.example.com/finishSignUp?cartId=1234',
-    // This must be true.
-    handleCodeInApp: true,
+const auth = getAuth();
+
+export const verificarCorreoElectrónico = (email, actionCodeSettings) => {
+    sendSignInLinkToEmail(email, actionCodeSettings)
 };
