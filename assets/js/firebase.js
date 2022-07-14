@@ -1,6 +1,7 @@
 
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-app.js";
+
 import {
     getFirestore,
     collection,
@@ -12,6 +13,8 @@ import {
     getDoc,
     updateDoc,
 } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-firestore.js"
+
+import { getAuth, sendSignInLinkToEmail } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-auth.js"
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -66,3 +69,11 @@ export const getCliente = (id) => getDoc(doc(db, 'clientesContrato', id));
 export const updateCliente = (id, nuevosDatos) => {
     updateDoc(doc(db, 'clientesContrato', id), nuevosDatos)
 }
+
+const actionCodeSettings = {
+    // URL you want to redirect back to. The domain (www.example.com) for this
+    // URL must be in the authorized domains list in the Firebase Console.
+    url: 'https://www.example.com/finishSignUp?cartId=1234',
+    // This must be true.
+    handleCodeInApp: true,
+};
