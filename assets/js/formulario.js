@@ -48,11 +48,8 @@ function modalFormulario() {
     funcionalidadModalFormulario()
     validacionEventListener()
 
-    formulario.addEventListener('submit', () =>  {
-        enviarFormularioModal()
-        verificarCorreoElectrónico()
-    });
-
+    formulario.addEventListener('submit', enviarFormularioModal);
+    
     document.querySelectorAll('span.cerrarModal').forEach((btn) => {
         btn.addEventListener('click', () => {
             sectionModal.removeChild(formulario);
@@ -239,11 +236,7 @@ function agregarClienteEnBBDD() {
     const profesion = document.querySelector('.formBox input[name="profesion"]')
 
     clienteContrato(nombre.value, email.value, telefono.value, rut.value, comuna.value, direccion.value, profesion.value)
-}
-
-function enviarVerificacion() {
-    const email = document.querySelector('.formBox input[name="email"]').value;
-
+    
     const actionCodeSettings = {
         // URL you want to redirect back to. The domain (www.example.com) for this
         // URL must be in the authorized domains list in the Firebase Console.
@@ -252,5 +245,5 @@ function enviarVerificacion() {
         handleCodeInApp: true,
     };
 
-    verificarCorreoElectrónico(email, actionCodeSettings);
+    verificarCorreoElectrónico(email.value, actionCodeSettings)
 }

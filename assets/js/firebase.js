@@ -15,6 +15,7 @@ import {
 } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-firestore.js"
 
 import { getAuth, sendSignInLinkToEmail } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-auth.js"
+
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -72,6 +73,10 @@ export const updateCliente = (id, nuevosDatos) => {
 
 const auth = getAuth();
 
-export const verificarCorreoElectrónico = (email, actionCodeSettings) => {
-    sendSignInLinkToEmail(email, actionCodeSettings)
+export const verificarCorreoElectrónico = (email, action) => {
+    sendSignInLinkToEmail(auth, email, action)
+        .then(() => {
+            console.log('hemos enviado un link de confirmacion')
+        })
+        .catch((error) => console.log(error.code))
 };
