@@ -463,6 +463,8 @@ a#access-footer{
 }
 
 .card-dialogo{
+    display: flex;
+    flex-flow: column;
     height: fit-content;
     max-height: 70vh;
     width: 50%;
