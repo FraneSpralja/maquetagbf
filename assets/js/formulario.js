@@ -1,4 +1,4 @@
-import { clienteContrato, verificarCorreoElectrónico } from './firebase.js'
+import { clienteContrato, verificarCorreoElectronico, getImageFront, getImageBack } from './firebase.js'
 
 export const registroBtn = document.querySelector('#access-button');
 export const newResgistroBtn = document.querySelector('#news-register');
@@ -200,7 +200,7 @@ function enviarFormularioModal(e) {
     e.preventDefault();
 
     const parrafoSuccess = document.createElement('p');
-    parrafoSuccess.textContent = `El formulario ha sido enviado.`;
+    parrafoSuccess.textContent = `Te hemos enviado un correo para confirmar tu email (revisa la carpeta de spam)`;
     parrafoSuccess.classList.add('mensaje-success', 'mensaje-modal');
 
     sectionModal.appendChild(parrafoSuccess);
@@ -211,7 +211,7 @@ function enviarFormularioModal(e) {
         parrafoSuccess.remove();
 
         resetFormularioModal();
-    }, 3000)
+    }, 10000)
 }
 
 function resetFormularioModal(){
@@ -234,8 +234,17 @@ function agregarClienteEnBBDD() {
     const comuna = document.querySelector('.formBox input[name="comuna"]')
     const direccion = document.querySelector('.formBox input[name="direccion"]')
     const profesion = document.querySelector('.formBox input[name="profesion"]')
+    const frontDNI = document.querySelector('.formBox input[name="cedulaFront"]')
+    const backDNI = document.querySelector('.formBox input[name="cedulaBack"]')
+    const ingreso = new Date().toLocaleString();
 
-    clienteContrato(nombre.value, email.value, telefono.value, rut.value, comuna.value, direccion.value, profesion.value)
+    const frontImg = new File([frontDNI.files], `${frontDNI.value}`)
+    const backtImg = new File([backDNI.files], `${backDNI.value}`)
+
+    console.log(frontImg)
+    console.log(backtImg)
+
+    clienteContrato(nombre.value, email.value, telefono.value, rut.value, comuna.value, direccion.value, profesion.value, ingreso)
     
     const actionCodeSettings = {
         // URL you want to redirect back to. The domain (www.example.com) for this
@@ -245,5 +254,7 @@ function agregarClienteEnBBDD() {
         handleCodeInApp: true,
     };
 
-    verificarCorreoElectrónico(email.value, actionCodeSettings)
+    verificarCorreoElectronico(email.value, actionCodeSettings)
+    getImageFront(frontImg);
+    getImageBack(backtImg);
 }

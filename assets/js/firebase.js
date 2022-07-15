@@ -1,6 +1,6 @@
 
 // Import the functions you need from the SDKs you need
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-app.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-app.js";
 
 import {
     getFirestore,
@@ -12,9 +12,15 @@ import {
     onSnapshot,
     getDoc,
     updateDoc,
-} from "https://www.gstatic.com/firebasejs/9.8.3/firebase-firestore.js"
+} from "https://www.gstatic.com/firebasejs/9.9.0/firebase-firestore.js"
 
-import { getAuth, sendSignInLinkToEmail } from "https://www.gstatic.com/firebasejs/9.8.3/firebase-auth.js"
+import { getAuth, sendSignInLinkToEmail } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-auth.js"
+
+import {
+    getStorage, 
+    ref, 
+    uploadBytes  
+} from "https://www.gstatic.com/firebasejs/9.9.0/firebase-storage.js"
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -34,7 +40,7 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore();
 
-export const clienteContrato = (nombre, email, telefono, rut, comuna, direccion, profesion) => {
+export const clienteContrato = (nombre, email, telefono, rut, comuna, direccion, profesion, ingreso) => {
     addDoc(collection(db, 'clientesContrato'), {
         nombre: nombre,
         email: email,
@@ -42,7 +48,8 @@ export const clienteContrato = (nombre, email, telefono, rut, comuna, direccion,
         rut: rut,
         comuna: comuna,
         direccion: direccion,
-        profesion: profesion
+        profesion: profesion,
+        ingreso: ingreso,
     })
 };
 
@@ -73,10 +80,28 @@ export const updateCliente = (id, nuevosDatos) => {
 
 const auth = getAuth();
 
-export const verificarCorreoElectrónico = (email, action) => {
+export const verificarCorreoElectronico = (email, action) => {
     sendSignInLinkToEmail(auth, email, action)
         .then(() => {
             console.log('hemos enviado un link de confirmacion')
         })
         .catch((error) => console.log(error.code))
 };
+
+const storage = getStorage();
+const storageFrontRef = ref(storage, `image/cedulaFront/front_${Date.now()}.png`);
+const storageBackRef = ref(storage, `image/cedulaBack/back_${Date.now()}.png`);
+
+export const getImageFront = (front) => {
+    uploadBytes(storageFrontRef, front)
+        .then((snapshot) => {
+            console.log('imagen de front cargada')
+        })
+}
+
+export const getImageBack = (back) => {
+    uploadBytes(storageBackRef, back)
+        .then((snapshot) => {
+            console.log('imagen de back cargada')
+        })
+}

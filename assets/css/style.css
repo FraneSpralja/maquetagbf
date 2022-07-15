@@ -463,9 +463,9 @@ a#access-footer{
 }
 
 .card-dialogo{
-    min-height: 60vh;
+    height: fit-content;
     max-height: 70vh;
-    width: 30%;
+    width: 50%;
     margin: auto;
     background-color: #fff;
     padding: 10px 15px;
@@ -484,7 +484,7 @@ a#access-footer{
     height: auto;
     display: block;
     margin: auto;
-    margin-bottom: 60px;
+    margin-bottom: 10px;
 }
 
 .card-dialogo-body{
@@ -745,7 +745,7 @@ a#menu_burger {
     }
 
     .card-dialogo-header img {
-        width: 200px;
+        width: 100px;
     }
 
     .close-dialog-button {
@@ -784,7 +784,7 @@ a#menu_burger {
     }
 
     .card-dialogo-header img {
-        margin-bottom: 20px;
+        margin-bottom: 5px;
     }
 
     footer#footer {

@@ -25,6 +25,7 @@ const inputRut = document.querySelector('#rut');
 const inputComuna = document.querySelector('#comuna');
 const inputDireccion = document.querySelector('#direccion');
 const inputProfesion = document.querySelector('#profesion');
+const ingresoFecha = new Date().toLocaleString()
 
 let editStatus = false;
 let id = '';
@@ -40,7 +41,7 @@ async function pintarClientesTabla() {
 
         querySnapShot.forEach(cliente => {
 
-            const { nombre, email, telefono, rut, comuna, direccion, profesion } = cliente.data();
+            const { nombre, email, telefono, rut, comuna, direccion, profesion, ingreso} = cliente.data();
 
 
             listadoClientes.innerHTML +=`
@@ -52,6 +53,7 @@ async function pintarClientesTabla() {
                     <td>${comuna}</td>
                     <td>${direccion}</td>
                     <td>${profesion}</td>
+                    <td>${ingreso}</td>
                     <td>
                         <a href="#" data-id="${cliente.id}" class="eliminar" style="color: red">Eliminar</a>
                         <a href="#" data-id="${cliente.id}" class="editar" style="color: green">Editar</a>
@@ -74,7 +76,7 @@ async function pintarClientesTabla() {
                 const doc = await getCliente(e.target.dataset.id)
                 const cliente = doc.data()
 
-                const { nombre, email, telefono, rut, comuna, direccion, profesion } = cliente;
+                const { nombre, email, telefono, rut, comuna, direccion, profesion} = cliente;
 
                 inputNombre.value = nombre;
                 inputEmail.value = email;
@@ -99,7 +101,7 @@ formulario.addEventListener('submit', (e) => {
 
     
     if(!editStatus) {
-        clienteContrato(inputNombre.value, inputEmail.value, inputTelefono.value, inputRut.value, inputComuna.value, inputDireccion.value, inputProfesion.value);
+        clienteContrato(inputNombre.value, inputEmail.value, inputTelefono.value, inputRut.value, inputComuna.value, inputDireccion.value, inputProfesion.value, ingresoFecha);
     } else {
         updateCliente(id, {
             nombre: inputNombre.value, 
