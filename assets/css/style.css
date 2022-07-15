@@ -467,7 +467,7 @@ a#access-footer{
     flex-flow: column;
     height: fit-content;
     max-height: 70vh;
-    width: 50%;
+    width: 40%;
     margin: auto;
     background-color: #fff;
     padding: 10px 15px;
@@ -482,7 +482,7 @@ a#access-footer{
 }
 
 .card-dialogo-header img{
-    width: 60%;
+    width: 30%;
     height: auto;
     display: block;
     margin: auto;
@@ -490,7 +490,8 @@ a#access-footer{
 }
 
 .card-dialogo-body{
-    margin-top: auto;
+    width: 80%;
+    margin: auto;
     padding-bottom: 10px;
     line-height: 1.5;
 }
