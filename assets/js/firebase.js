@@ -40,7 +40,7 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore();
 
-export const clienteContrato = (nombre, email, telefono, rut, comuna, direccion, profesion, ingreso) => {
+export const clienteContrato = (nombre, email, telefono, rut, comuna, direccion, profesion, acepto, ingreso) => {
     addDoc(collection(db, 'clientesContrato'), {
         nombre: nombre,
         email: email,
@@ -49,6 +49,7 @@ export const clienteContrato = (nombre, email, telefono, rut, comuna, direccion,
         comuna: comuna,
         direccion: direccion,
         profesion: profesion,
+        acepto: acepto,
         ingreso: ingreso,
     })
 };

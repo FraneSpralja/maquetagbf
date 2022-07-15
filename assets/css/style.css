@@ -897,6 +897,19 @@ div#myChart {
     padding: 0 10px;
 }
 
+.formularioContrato div.aceptoBox {
+    display: flex;
+}
+
+input#check_aceptar {
+    width: 1vw;
+}
+
+input#check_aceptar ~ label {
+    width: 80%;
+    font-size: 13px;
+}
+
 /* #formularioContrato div.formBox:first-child {
     margin-left: 1vw;
 } */

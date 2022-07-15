@@ -41,7 +41,7 @@ async function pintarClientesTabla() {
 
         querySnapShot.forEach(cliente => {
 
-            const { nombre, email, telefono, rut, comuna, direccion, profesion, ingreso} = cliente.data();
+            const { nombre, email, telefono, rut, comuna, direccion, profesion, acepto, ingreso} = cliente.data();
 
 
             listadoClientes.innerHTML +=`
@@ -53,6 +53,7 @@ async function pintarClientesTabla() {
                     <td>${comuna}</td>
                     <td>${direccion}</td>
                     <td>${profesion}</td>
+                    <td>${acepto}</td>
                     <td>${ingreso}</td>
                     <td>
                         <a href="#" data-id="${cliente.id}" class="eliminar" style="color: red">Eliminar</a>

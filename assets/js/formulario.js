@@ -177,8 +177,9 @@ function habilitarButtonSubmit() {
     const comuna = document.querySelector('.formBox input[name="comuna"]');
     const direccion = document.querySelector('.formBox input[name="direccion"]');
     const profesion = document.querySelector('.formBox input[name="profesion"]');
+    const acepto = document.querySelector('.aceptoBox input[name="aceptar"]');
 
-    if(er.test(email.value) && nombre.value !== '' && telefono.value !== '' && rut.value !== '' && comuna.value !== '' && direccion.value !== '' && profesion.value !== ''){
+    if(er.test(email.value) && nombre.value !== '' && telefono.value !== '' && rut.value !== '' && comuna.value !== '' && direccion.value !== '' && profesion.value !== '' && acepto.checked !== null){
         document.querySelector('.buttonBox button[type="submit"]').disabled = false;
         document.querySelector('.buttonBox button[type="submit"]').classList.remove('button-disabled')
     }
@@ -234,6 +235,7 @@ function agregarClienteEnBBDD() {
     const comuna = document.querySelector('.formBox input[name="comuna"]')
     const direccion = document.querySelector('.formBox input[name="direccion"]')
     const profesion = document.querySelector('.formBox input[name="profesion"]')
+    const acepto = document.querySelector('.aceptoBox input[name="aceptar"]');
     const frontDNI = document.querySelector('.formBox input[name="cedulaFront"]')
     const backDNI = document.querySelector('.formBox input[name="cedulaBack"]')
     const ingreso = new Date().toLocaleString();
@@ -243,8 +245,9 @@ function agregarClienteEnBBDD() {
 
     console.log(frontImg)
     console.log(backtImg)
+    console.log(acepto.value)
 
-    clienteContrato(nombre.value, email.value, telefono.value, rut.value, comuna.value, direccion.value, profesion.value, ingreso)
+    clienteContrato(nombre.value, email.value, telefono.value, rut.value, comuna.value, direccion.value, profesion.value, acepto.checked, ingreso)
     
     const actionCodeSettings = {
         // URL you want to redirect back to. The domain (www.example.com) for this
