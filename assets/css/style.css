@@ -820,7 +820,9 @@ a#menu_burger {
     display: block;
     margin: auto;
     margin-top: 15vh;
-    padding: 20px 130px;
+    padding: 20px 10px;
+    width: 26vw;
+    box-sizing: border-box;
 }
 
 .mensaje-success {
