@@ -388,6 +388,7 @@ footer#footer{
     padding: 30px 20px;
     background-color: #353535;
     display: flex;
+    flex-wrap: wrap;
 }
 
 div.footer-box{
@@ -446,6 +447,29 @@ a#access-footer{
     border-radius: 7px;
     display: block;
     margin: auto;
+}
+
+.direccion {
+    flex: 0 0 100%;
+    text-align: center;
+    color: #fff;
+}
+
+div#whatsapp a{
+    width: 5vw;
+    height: 5vw;
+    position: fixed;
+    top: 89%;
+    left: 1vw;
+    background-image: url(/assets/img/whatsapp.png);
+    background-size: auto 90%;
+    background-repeat: no-repeat;
+    filter: drop-shadow(0 0 4px #494949);
+    cursor: pointer;
+}
+
+.wrap_be8e {
+    filter: drop-shadow(0 0 4px #494949) !important;
 }
 
 /* VENTANA DE DIALOGO */
@@ -792,6 +816,17 @@ a#menu_burger {
 
     footer#footer {
         flex-flow: column;
+    }
+
+    div#whatsapp a {
+        width: 20vw;
+        height: 20vw;
+        top: 80%;
+        left: 2vw;
+    }
+
+    .wrap_be8e {
+        bottom: 9% !important;
     }
 }
 
