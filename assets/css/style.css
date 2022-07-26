@@ -541,6 +541,9 @@ div#whatsapp a{
 
 #conceptos-box {
     display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    row-gap: 20px;
 }
 
 .card-conceptos {
@@ -553,7 +556,7 @@ div#whatsapp a{
     padding-left: 10px;
     padding-right: 10px;
     cursor: pointer;
-    transition-property: box-shadow;
+    transition-property: box-shadow, background;
     transition-duration: .5s;
     transition-delay: .1s;
     transition-timing-function: linear;
@@ -576,42 +579,18 @@ div#whatsapp a{
     margin: auto;
 }
 
-.fadeUp-box {
-    display: flex;
-    width: 250px;
-    height: 0px;
-    position: relative;
+.cardConceptHover {
     background-color: #00376f;
-    margin-top: -8.2vw;
-    margin-left: -0.5vw;
-    color: transparent;
-    box-shadow: none;
-    border-radius: 7px;
-    transition-property: height, color, box-shadow;
-    transition-duration: .5s;
-    transition-delay: .1s;
-    transition-timing-function: linear;
-}
-
-.fadeUp-box > span {
-    display: block;
-    margin: auto;
-    text-align: center;
-}
-
-.card-conceptos:hover > .fadeUp-box {
     color: #fff;
-    font-weight: bold;
-    height: 250px;
+    box-shadow: 0 0 4px #595959
 }
 
-.card-conceptos:hover {
-    box-shadow: 0 0 10px #4b589d;
+.d-none{
+    display: none !important;
 }
 
-.fadeUp-box-one {
-    margin-top: -18.4vh;
-    margin-left: -1.2vh;
+.d-block {
+    display: block !important;
 }
 
 /* burguer menu */

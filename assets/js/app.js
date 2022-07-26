@@ -17,6 +17,7 @@ import {
 } from './menu.js'
 
 // VARIABLES
+const cardConcepts = document.querySelectorAll('.card-conceptos')
 
 //Formulario Header
 const formulario = document.querySelector('#formulario');
@@ -52,6 +53,7 @@ function eventListener() {
             imprimirTablaDivisas()
         }, 500)
         burgerMenu()
+        hoverCardConcept()
     });
 
     nombre.addEventListener('blur', validarFormularioHeader);
@@ -195,6 +197,25 @@ function activarModalInfo() {
             ventanaTres.classList.add('ventana-display-none');
         });
     });
+}
+
+// Cardconcept
+function hoverCardConcept() {
+    cardConcepts.forEach((card) => {
+        card.addEventListener('mouseover', () => {
+            card.classList.add('cardConceptHover')
+            card.querySelector('h3').classList.add('d-none')
+            card.querySelector('.hover-title').classList.remove('d-none')
+            card.querySelector('.hover-title').classList.add('d-block')
+        })
+
+        card.addEventListener('mouseout', () => {
+            card.classList.remove('cardConceptHover')
+            card.querySelector('h3').classList.remove('d-none')
+            card.querySelector('.hover-title').classList.add('d-none')
+            card.querySelector('.hover-title').classList.remove('d-block')
+        })
+    })
 }
 
 // FIREBASE
