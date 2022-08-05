@@ -16,6 +16,14 @@ import {
     burgerMenu,
 } from './menu.js'
 
+import {
+    getPostWP,
+} from './post.js'
+
+import {
+    descargaMetaTrader
+} from './metaTrader.js'
+
 // VARIABLES
 const cardConcepts = document.querySelectorAll('.card-conceptos')
 
@@ -52,8 +60,13 @@ function eventListener() {
         setTimeout(() => {
             imprimirTablaDivisas()
         }, 500)
+        // Menu
         burgerMenu()
+        // Post WP
+        getPostWP()
+        // Otros
         hoverCardConcept()
+        descargaMetaTrader()
     });
 
     nombre.addEventListener('blur', validarFormularioHeader);

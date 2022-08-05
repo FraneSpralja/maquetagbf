@@ -234,3 +234,5 @@ function rescateValoresDivisasCinta(data) {
     }    
     bloqueCintaDivisas.appendChild(cintaDivisas);
 }
+
+// https://backml.btgpactual.cl/currency
