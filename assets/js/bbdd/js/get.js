@@ -2,7 +2,8 @@ import { clienteContrato,
         onGetClientes, 
         deleteCliente, 
         getCliente,
-        updateCliente 
+        updateCliente,
+
 } from '../../firebase.js'
 
 /* nombre: nombre,
@@ -55,6 +56,10 @@ async function pintarClientesTabla() {
                     <td>${profesion}</td>
                     <td>${acepto}</td>
                     <td>${ingreso}</td>
+                    <td>
+                        <a href="#" target="_blank" class="cedulaDelante" style="color: blue">Delante</a>
+                        <a href="#" target="_blank" class="cedulaAtras" style="color: blue">Atras</a>
+                    </td>
                     <td>
                         <a href="#" data-id="${cliente.id}" class="eliminar" style="color: red">Eliminar</a>
                         <a href="#" data-id="${cliente.id}" class="editar" style="color: green">Editar</a>

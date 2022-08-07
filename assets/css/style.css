@@ -410,7 +410,7 @@ ul.post-list {
 ul.post-list > li {
     box-shadow: 0 0 4px #cacaca;
     padding: 5px;
-    width: 180px;
+    width: 20vw;
     display: flex;
     flex-flow: column;
     row-gap: 10px;
@@ -864,6 +864,21 @@ a#menu_burger {
 
     ul.grupo-lista-descarga > li {
         margin-bottom: 15px;
+    }
+
+    ul.post-list  {
+        row-gap: 20px;
+    }
+
+    ul.post-list > li {
+        width: 80vw;
+    }
+
+    ul.post-list > li > a {
+        align-self: center;
+        width: 80%;
+        padding: 7px;
+        text-align: center;
     }
 }
 

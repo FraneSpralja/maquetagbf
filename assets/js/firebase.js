@@ -18,9 +18,20 @@ import { getAuth, sendSignInLinkToEmail } from "https://www.gstatic.com/firebase
 
 import {
     getStorage, 
-    ref, 
-    uploadBytes  
+    ref as sRef, 
+    uploadBytesResumable,
+    getDownloadURL
 } from "https://www.gstatic.com/firebasejs/9.9.0/firebase-storage.js"
+
+import {
+    getDatabase, 
+    ref, 
+    set,
+    child,
+    get,
+    update,
+    remove
+} from "https://www.gstatic.com/firebasejs/9.9.0/firebase-database.js"
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -40,7 +51,7 @@ const app = initializeApp(firebaseConfig);
 
 const db = getFirestore();
 
-export const clienteContrato = (nombre, email, telefono, rut, comuna, direccion, profesion, acepto, ingreso) => {
+export const clienteContrato = (nombre, email, telefono, rut, comuna, direccion, profesion, acepto, ingreso, id) => {
     addDoc(collection(db, 'clientesContrato'), {
         nombre: nombre,
         email: email,
@@ -51,8 +62,11 @@ export const clienteContrato = (nombre, email, telefono, rut, comuna, direccion,
         profesion: profesion,
         acepto: acepto,
         ingreso: ingreso,
+        idImg: id,
     })
 };
+
+// FIRESTORE
 
 export const clienteNuevo = (nombre, email, telefono, riesgo) => {
     addDoc(collection(db, 'clienteNuevo'), {
@@ -62,8 +76,6 @@ export const clienteNuevo = (nombre, email, telefono, riesgo) => {
         riesgo: riesgo
     })
 };
-
-// export const getClientes = async () => await getDocs(collection(db, 'clientesContrato'));
 
 export const onGetClientes = (callback) => {
     onSnapshot(collection(db, 'clientesContrato'), callback)
@@ -89,20 +101,114 @@ export const verificarCorreoElectronico = (email, action) => {
         .catch((error) => console.log(error.code))
 };
 
-const storage = getStorage();
-const storageFrontRef = ref(storage, `image/cedulaFront/front_${Date.now()}.png`);
-const storageBackRef = ref(storage, `image/cedulaBack/back_${Date.now()}.png`);
+// STORAGE
 
-export const getImageFront = (front) => {
-    uploadBytes(storageFrontRef, front)
-        .then((snapshot) => {
+const storage = getStorage();
+
+export async function setImageFront (front) {
+    const metaData = {
+        contentType: front.type
+    }
+    uploadBytesResumable(sRef(storage, `image/cedulaFront/front_${getNameFile(front)}${getFileExt(front)}`), front, metaData)
+        .on('stage-changed', (snapshot) => {
             console.log('imagen de front cargada')
         })
 }
 
-export const getImageBack = (back) => {
-    uploadBytes(storageBackRef, back)
-        .then((snapshot) => {
+export async function setImageBack(back) {
+    const metaData = {
+        contentType: back.type
+    }
+    uploadBytesResumable(sRef(storage, `image/cedulaBack/back_${getNameFile(back)}${getFileExt(back)}`), back, metaData)
+        .on('stage-changed', (snapshot) => {
             console.log('imagen de back cargada')
         })
+}
+
+export function getImageFront(front) {
+    const metaData = {
+        contentType: front.type
+    }
+    getDownloadURL(uploadBytesResumable(sRef(storage, `image/cedulaFront/front_${getNameFile(front)}${getFileExt(front)}`), front, metaData).snapshot.ref)
+        .then((downloadURL) => {
+            setTimeout(() => {
+                guardarImagenFrontURL(downloadURL, front)
+            }, 1000)
+        })
+}
+
+export function getImageBack(back) {
+    const metaData = {
+        contentType: back.type
+    }
+    getDownloadURL(uploadBytesResumable(sRef(storage, `image/cedulaBack/back_${getNameFile(back)}${getFileExt(back)}`), back, metaData).snapshot.ref)
+        .then((downloadURL) => {
+            setTimeout(() => {
+                guardarImagenBackURL(downloadURL, back)
+            }, 1000)
+        })
+}
+
+function getFileExt(file) {
+        let temp = file.name.split('.')
+        let ext = temp.slice((temp.length-1),(temp.length));
+        return '.' + ext[0];
+}
+
+function getNameFile(file) {
+    let temp = file.name.split('.');
+    let fname = temp.slice(0,-1).join('.');
+    return fname;
+}
+
+// REALDATABASE
+
+const realdb = getDatabase()
+
+function guardarImagenFrontURL(URL, file){
+    let name = getNameFile(file);
+    let ext = getFileExt(file);
+
+    set(ref(realdb, "imagesFront/"+name), {
+        ImageName: (name+ext),
+        ImageURL: URL
+    })
+}
+
+function guardarImagenBackURL(URL, file){
+    let name = getNameFile(file);
+    let ext = getFileExt(file);
+
+    console.log(file)
+
+    set(ref(realdb, "imagesBack/"+name), {
+        ImageName: (name+ext),
+        ImageURL: URL
+    })
+}
+
+export function getImagenFrontURL(file){
+    let name = getNameFile(file);
+
+    let dbRef = ref(realdb)
+    get(child(dbRef, "imagesFront/"+name))
+        .then((snapshot) => {
+            if(snapshot.exists()) {
+                console.log(snapshot.val().ImageURL)
+            }
+        })
+        .catch(err => console.log('No hemos podido procesar la imagen, pero no te preocupes, nos contactaremos contigo'))
+}
+
+export function getImagenBackURL(file){
+    let name = getNameFile(file);
+
+    let dbRef = ref(realdb)
+    get(child(dbRef, "imagesBack/"+name))
+        .then((snapshot) => {
+            if(snapshot.exists()) {
+                console.log(snapshot.val().ImageURL)
+            }
+        })
+        .catch(err => console.log('No hemos podido procesar la imagen, pero no te preocupes, nos contactaremos contigo'))
 }

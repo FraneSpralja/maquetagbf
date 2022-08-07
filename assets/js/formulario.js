@@ -1,4 +1,13 @@
-import { clienteContrato, verificarCorreoElectronico, getImageFront, getImageBack } from './firebase.js'
+import { 
+    clienteContrato, 
+    verificarCorreoElectronico, 
+    setImageFront, 
+    setImageBack, 
+    getImageBack, 
+    getImageFront,
+    getImagenFrontURL,
+    getImagenBackURL
+} from './firebase.js'
 
 export const registroBtn = document.querySelector('#access-button');
 export const newResgistroBtn = document.querySelector('#news-register');
@@ -235,29 +244,41 @@ function agregarClienteEnBBDD() {
     const comuna = document.querySelector('.formBox input[name="comuna"]')
     const direccion = document.querySelector('.formBox input[name="direccion"]')
     const profesion = document.querySelector('.formBox input[name="profesion"]')
-    const acepto = document.querySelector('.aceptoBox input[name="aceptar"]');
     const frontDNI = document.querySelector('.formBox input[name="cedulaFront"]')
     const backDNI = document.querySelector('.formBox input[name="cedulaBack"]')
+    const acepto = document.querySelector('.aceptoBox input[name="aceptar"]');
     const ingreso = new Date().toLocaleString();
+    const id = Date.now()
 
-    const frontImg = new File([frontDNI.files], `${frontDNI.value}`)
-    const backtImg = new File([backDNI.files], `${backDNI.value}`)
-
-    console.log(frontImg)
-    console.log(backtImg)
-    console.log(acepto.value)
-
-    clienteContrato(nombre.value, email.value, telefono.value, rut.value, comuna.value, direccion.value, profesion.value, acepto.checked, ingreso)
+    clienteContrato(nombre.value, email.value, telefono.value, rut.value, comuna.value, direccion.value, profesion.value, acepto.checked, ingreso, id)
+    
+    let fileFront = [];
+    let fileBack = [];
+    
+    
+    fileFront = frontDNI.files;
+    fileBack = backDNI.files;
+    
+    setImageFront(fileFront[0]);
+    setImageBack(fileBack[0]);
+    setTimeout(() => {
+        getImageFront(fileFront[0]);
+        getImageBack(fileBack[0]);
+    }, 2000)
+    setTimeout(() => {
+        getImagenFrontURL(fileFront[0])
+        getImagenBackURL(fileBack[0])
+    },4000)
     
     const actionCodeSettings = {
         // URL you want to redirect back to. The domain (www.example.com) for this
         // URL must be in the authorized domains list in the Firebase Console.
-        url: 'https://inteligenciafinanciera.netlify.app/auth.html',
+        url: 'https://www.inteligenciaf.com',
         // This must be true.
         handleCodeInApp: true,
     };
 
     verificarCorreoElectronico(email.value, actionCodeSettings)
-    getImageFront(frontImg);
-    getImageBack(backtImg);
+
 }
+    
