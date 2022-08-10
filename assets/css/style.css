@@ -320,8 +320,10 @@ div.news-newsletter-box div h3 {
     border: none;
     border-radius: 7px;
     color: #fff;
-    font-size: 15px;
+    font-size: 25px;
     font-weight: bold;
+    width: 350px;
+    height: 60px;
 }
 
 #news-register, .blog-button{
@@ -859,7 +861,8 @@ a#menu_burger {
     }
 
     .grupo-lista-descarga {
-        left: 16% !important;
+        width: 270px !important;
+        left: 4% !important;
     }
 
     ul.grupo-lista-descarga > li {
@@ -879,6 +882,10 @@ a#menu_burger {
         width: 80%;
         padding: 7px;
         text-align: center;
+    }
+
+    #descarga_mt5 > button.buttonDescarga {
+        width: 320px;
     }
 }
 
@@ -1091,15 +1098,21 @@ span.cerrarModal {
     padding: 10px 30px;
     background-color: #00376f;
     position: absolute;
-    left: 38%;
-    margin-top: 28px;
+    left: 40.2%;
+    margin-top: 61px;
     border-radius: 7px;
     box-shadow: 0 0 5px #494949;
     list-style: none;
+    width: 300px;
+}
+
+ul.grupo-lista-descarga li {
+    margin-bottom: 7px;
 }
 
 .grupo-lista-descarga > li > a {
     color: #fff;
+    font-size: 18px;
 }
 
 .grupo-lista-descarga > li > a:hover {
