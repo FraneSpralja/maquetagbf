@@ -37,7 +37,7 @@ import {
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
+export const firebaseConfig = {
 apiKey: "AIzaSyDPGZcHUmFsKbAjyiYQODr8wF3jL-fyV0E",
 authDomain: "inteligenciafinanciera-cfb97.firebaseapp.com",
 projectId: "inteligenciafinanciera-cfb97",
@@ -164,6 +164,7 @@ function getNameFile(file) {
 // REALDATABASE
 
 const realdb = getDatabase()
+export const dbRef = ref(realdb)
 
 function guardarImagenFrontURL(URL, file){
     let name = getNameFile(file);
@@ -185,28 +186,4 @@ function guardarImagenBackURL(URL, file){
         ImageName: (name+ext),
         ImageURL: URL
     })
-}
-
-export function getImagenFrontURL(){
-    // let name = getNameFile(file);
-
-    let dbRef = ref(realdb)
-    get(child(dbRef, "imagesFront"))
-        .then((snapshot) => {
-                snapshot.forEach((dataImg) => {
-                    console.log(dataImg.val())
-                })
-        })
-}
-
-export function getImagenBackURL(){
-    // let name = getNameFile(file);
-
-    let dbRef = ref(realdb)
-    get(child(dbRef, "imagesBack"))
-        .then((snapshot) => {
-                snapshot.forEach((dataImg) => {
-                    console.log(dataImg.val())
-                })
-        })
 }

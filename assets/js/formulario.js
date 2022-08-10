@@ -5,8 +5,6 @@ import {
     setImageBack, 
     getImageBack, 
     getImageFront,
-    getImagenFrontURL,
-    getImagenBackURL
 } from './firebase.js'
 
 export const registroBtn = document.querySelector('#access-button');
@@ -265,10 +263,6 @@ function agregarClienteEnBBDD() {
         getImageFront(fileFront[0]);
         getImageBack(fileBack[0]);
     }, 2000)
-    setTimeout(() => {
-        getImagenFrontURL(fileFront[0])
-        getImagenBackURL(fileBack[0])
-    },4000)
     
     const actionCodeSettings = {
         // URL you want to redirect back to. The domain (www.example.com) for this
