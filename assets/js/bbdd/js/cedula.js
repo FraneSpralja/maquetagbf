@@ -69,7 +69,7 @@ function getImagenBackURL(){
         listGroup.classList.add('lista-cedula');
 
         const title = document.createElement('h3');
-        title.textContent = 'Imagen Delantera'
+        title.textContent = 'Imagen Trasera'
 
         snapshot.forEach((dataImg) => {
                 // console.log(dataImg.val())
