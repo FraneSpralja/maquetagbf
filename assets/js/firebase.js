@@ -187,28 +187,26 @@ function guardarImagenBackURL(URL, file){
     })
 }
 
-export function getImagenFrontURL(file){
-    let name = getNameFile(file);
+export function getImagenFrontURL(){
+    // let name = getNameFile(file);
 
     let dbRef = ref(realdb)
-    get(child(dbRef, "imagesFront/"+name))
+    get(child(dbRef, "imagesFront"))
         .then((snapshot) => {
-            if(snapshot.exists()) {
-                console.log(snapshot.val().ImageURL)
-            }
+                snapshot.forEach((dataImg) => {
+                    console.log(dataImg.val())
+                })
         })
-        .catch(err => console.log('No hemos podido procesar la imagen, pero no te preocupes, nos contactaremos contigo'))
 }
 
-export function getImagenBackURL(file){
-    let name = getNameFile(file);
+export function getImagenBackURL(){
+    // let name = getNameFile(file);
 
     let dbRef = ref(realdb)
-    get(child(dbRef, "imagesBack/"+name))
+    get(child(dbRef, "imagesBack"))
         .then((snapshot) => {
-            if(snapshot.exists()) {
-                console.log(snapshot.val().ImageURL)
-            }
+                snapshot.forEach((dataImg) => {
+                    console.log(dataImg.val())
+                })
         })
-        .catch(err => console.log('No hemos podido procesar la imagen, pero no te preocupes, nos contactaremos contigo'))
 }
