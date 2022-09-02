@@ -438,6 +438,7 @@ footer#footer{
     background-color: #353535;
     display: flex;
     flex-wrap: wrap;
+    padding-bottom: 50px;
 }
 
 div.footer-box{
