@@ -1137,6 +1137,26 @@ ul.grupo-lista-descarga li > i {
     color: #65a9ee;
 }
 
+div#mensajeDeRiesgo {
+    flex: 0 0 80%;
+    text-align: center;
+    color: #fff;
+    margin: auto;
+}
+
+div#mensajeDeRiesgo b {
+    color: #1b0ae8;
+    font-size: 16px;
+}
+
+hr {
+    flex: 0 0 60%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 @media (min-width: 350px) and (max-width: 790px) {
     .formularioContrato {
         width: 80%;
