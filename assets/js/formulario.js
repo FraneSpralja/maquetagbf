@@ -245,7 +245,7 @@ function agregarClienteEnBBDD() {
     const frontDNI = document.querySelector('.formBox input[name="cedulaFront"]')
     const backDNI = document.querySelector('.formBox input[name="cedulaBack"]')
     const acepto = document.querySelector('.aceptoBox input[name="aceptar"]');
-    const ingreso = new Date().toLocaleString();
+    const ingreso = new Date().toLocaleDateString();
     const id = Date.now()
 
     clienteContrato(nombre.value, email.value, telefono.value, rut.value, comuna.value, direccion.value, profesion.value, acepto.checked, ingreso, id)
@@ -257,11 +257,11 @@ function agregarClienteEnBBDD() {
     fileFront = frontDNI.files;
     fileBack = backDNI.files;
     
-    setImageFront(fileFront[0]);
-    setImageBack(fileBack[0]);
+    setImageFront(fileFront[0], ingreso);
+    setImageBack(fileBack[0], ingreso);
     setTimeout(() => {
-        getImageFront(fileFront[0]);
-        getImageBack(fileBack[0]);
+        getImageFront(fileFront[0], ingreso);
+        getImageBack(fileBack[0], ingreso);
     }, 2000)
     
     const actionCodeSettings = {

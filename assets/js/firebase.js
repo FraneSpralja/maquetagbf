@@ -105,7 +105,7 @@ export const verificarCorreoElectronico = (email, action) => {
 
 const storage = getStorage();
 
-export async function setImageFront (front) {
+export async function setImageFront (front, date) {
     const metaData = {
         contentType: front.type
     }
@@ -115,7 +115,7 @@ export async function setImageFront (front) {
         })
 }
 
-export async function setImageBack(back) {
+export async function setImageBack(back, date) {
     const metaData = {
         contentType: back.type
     }
@@ -125,26 +125,26 @@ export async function setImageBack(back) {
         })
 }
 
-export function getImageFront(front) {
+export function getImageFront(front, date) {
     const metaData = {
         contentType: front.type
     }
     getDownloadURL(uploadBytesResumable(sRef(storage, `image/cedulaFront/front_${getNameFile(front)}${getFileExt(front)}`), front, metaData).snapshot.ref)
         .then((downloadURL) => {
             setTimeout(() => {
-                guardarImagenFrontURL(downloadURL, front)
+                guardarImagenFrontURL(downloadURL, front, date)
             }, 1000)
         })
 }
 
-export function getImageBack(back) {
+export function getImageBack(back, date) {
     const metaData = {
         contentType: back.type
     }
     getDownloadURL(uploadBytesResumable(sRef(storage, `image/cedulaBack/back_${getNameFile(back)}${getFileExt(back)}`), back, metaData).snapshot.ref)
         .then((downloadURL) => {
             setTimeout(() => {
-                guardarImagenBackURL(downloadURL, back)
+                guardarImagenBackURL(downloadURL, back, date)
             }, 1000)
         })
 }
@@ -158,7 +158,7 @@ function getFileExt(file) {
 function getNameFile(file) {
     let temp = file.name.split('.');
     let fname = temp.slice(0,-1).join('.');
-    return fname;
+    return "_"+fname;
 }
 
 // REALDATABASE
@@ -166,26 +166,24 @@ function getNameFile(file) {
 const realdb = getDatabase()
 export const dbRef = ref(realdb)
 
-function guardarImagenFrontURL(URL, file){
+function guardarImagenFrontURL(URL, file, date){
     let name = getNameFile(file);
     let ext = getFileExt(file);
 
     set(ref(realdb, "imagesFront/"+name), {
-        ImageName: (name+ext),
-        ImageURL: URL,
-        date: new Date().toLocaleString(),
+        ImageName: (date+"_"+name+ext),
+        ImageURL: URL
     })
 }
 
-function guardarImagenBackURL(URL, file){
+function guardarImagenBackURL(URL, file, date){
     let name = getNameFile(file);
     let ext = getFileExt(file);
 
     console.log(file)
 
     set(ref(realdb, "imagesBack/"+name), {
-        ImageName: (name+ext),
-        ImageURL: URL,
-        date: new Date().toLocaleString(),
+        ImageName: (date+"_"+name+ext),
+        ImageURL: URL
     })
 }
