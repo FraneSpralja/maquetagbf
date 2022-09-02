@@ -862,7 +862,7 @@ a#menu_burger {
 
     .grupo-lista-descarga {
         width: 270px !important;
-        left: 4% !important;
+        right: 0 !important;
     }
 
     ul.grupo-lista-descarga > li {
@@ -1095,24 +1095,40 @@ span.cerrarModal {
 }
 
 .grupo-lista-descarga {
-    padding: 10px 30px;
+    padding: 20px 30px;
     background-color: #00376f;
     position: absolute;
-    left: 40.2%;
-    margin-top: 61px;
+    left: 0;
+    right: 5px;
+    display: block;
+    margin: auto;
+    margin-top: 60px;
     border-radius: 7px;
-    box-shadow: 0 0 5px #494949;
+    box-shadow: 0 0 5px #707070;
     list-style: none;
-    width: 300px;
+    width: 450px;
 }
 
 ul.grupo-lista-descarga li {
     margin-bottom: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+ul.grupo-lista-descarga li > i {
+    font-size: 25px;
+    color: #fff;
+    margin-right: 20px;
+    flex: 0 0 20%;
 }
 
 .grupo-lista-descarga > li > a {
     color: #fff;
     font-size: 18px;
+    flex: 0 0 80%;
+    text-align: initial;
+    padding-left: 20px;
 }
 
 .grupo-lista-descarga > li > a:hover {
