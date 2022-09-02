@@ -172,7 +172,8 @@ function guardarImagenFrontURL(URL, file){
 
     set(ref(realdb, "imagesFront/"+name), {
         ImageName: (name+ext),
-        ImageURL: URL
+        ImageURL: URL,
+        date: new Date().toLocaleString(),
     })
 }
 
@@ -184,6 +185,7 @@ function guardarImagenBackURL(URL, file){
 
     set(ref(realdb, "imagesBack/"+name), {
         ImageName: (name+ext),
-        ImageURL: URL
+        ImageURL: URL,
+        date: new Date().toLocaleString(),
     })
 }

@@ -26,7 +26,7 @@ function  getImagenFrontURL() {
 
         snapshot.forEach((dataImg) => {
                 // console.log(dataImg.val())
-                const { ImageName, ImageURL } = dataImg.val();
+                const { ImageName, ImageURL, date } = dataImg.val();
 
                 const listItem = document.createElement('li')
                 
@@ -50,9 +50,13 @@ function  getImagenFrontURL() {
 
                 itemImagen.appendChild(image);
 
+                const dateIngreso = document.createElement('span');
+                dateIngreso.textContent = date;
+
                 listItem.appendChild(itemName);
                 listItem.appendChild(itemURL);
                 listItem.appendChild(itemImagen);
+                listItem.appendChild(dateIngreso);
 
                 listGroup.appendChild(listItem);
             })
